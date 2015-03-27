@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Home{% endblock %}
+
+{% block body_block %}
+  <div class="page-header">
+  {% if user.is_authenticated %}
+    <h2>Hello {{ user.username }}! Welcome to MCS Crowdsourcing.</h2>
+  {% else %}
+    <h2>Welcome to MCS Crowdsourcing!</h2>
+  {% endif %}
+  </div>
+
+  <div>
+    <p>Please select a task to the left.</p>
+  </div>
+{% endblock %}
