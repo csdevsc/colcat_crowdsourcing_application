@@ -1,3 +1,5 @@
+{% load crowdsource_extras %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,17 +52,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <ul>
-                <li>
-                    <a href="">Task 1</a>
-                </li>
-                <li>
-                    <a href="">Task 2</a>
-                </li>
-                <li>
-                    <a href="">Task 3</a>
-                </li>
-            </ul>
+          {% block side_block %}
+            {% get_task_list task %}
+          {% endblock %}
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
            <div>

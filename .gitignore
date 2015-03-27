@@ -1,3 +1,5 @@
 *.pyc
 *.swp
 settings.py
+migrations/
+db.sqlite3
