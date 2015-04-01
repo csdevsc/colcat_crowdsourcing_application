@@ -1,4 +1,5 @@
 {% load crowdsource_extras %}
+{% load staticfiles %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,18 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+    <style>
+        .row {
+            margin-bottom: 70px;
+        }
+
+        img {
+            width: 50px;
+            margin-top: 20px;
+        }
+    </style>
   </head>
 
   <body>

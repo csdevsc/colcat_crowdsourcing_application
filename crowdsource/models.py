@@ -4,6 +4,7 @@ from django.template.defaultfilters import slugify
 class Task(models.Model):
     task_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=128, unique=True)
+    instructions = models.TextField()
     responses = models.IntegerField(default=0)
     TASK_TYPE_CHOICES = (
         ('T', 'Transcription'),
