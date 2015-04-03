@@ -1,0 +1,61 @@
+<!-- NAMING RANGES WITH KEY-->
+
+{% load staticfiles %}
+
+<div id="info" class="row bg-info">
+    <div class="col-md-12">
+        <h2>Transcription Key</h2>
+        <table class="table">
+            <tr>
+                <td>
+                    Value1
+                </td>
+                <td>
+                    Value2
+                </td>
+                <td>
+                    Value3
+                </td>
+                <td>
+                    Value4
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Value1
+                </td>
+                <td>
+                    Value2
+                </td>
+                <td>
+                    Value3
+                </td>
+                <td>
+                    Value4
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <img src="{% static 'data/naming/korean-1_30-40.png' %}" style="height: 600px; width: 500px;"/>
+    </div>
+    <div class="row">
+        <form action="/crowdsourcing/task/naming-ranges-1/" method="post">
+            {% csrf_token %}
+            <div class="col-md-6 well" style="height: 600px; overflow-y: scroll;">
+                <div class="inputfields">
+                    {{ form.as_p }}
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="text-center">
+                <button type="submit" class="btn btn-success" style="font-size: 20px;">Submit</button>
+            </div>
+            </form>
+        </div>
+
+    </div>

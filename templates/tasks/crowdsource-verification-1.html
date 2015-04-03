@@ -1,0 +1,198 @@
+<!-- Crowdsource Verification Task (2 choice only) -->
+
+{% load staticfiles %}
+
+<!-- ALERT ATTENTION TO INSTRUCTIONS -->
+<div class="alert alert-warning" role="alert">Check the box if the transcription is correct.</div>
+
+<form action="/crowdsourcing/task/crowdsource-verification-1/" method="post">
+    {% csrf_token %}
+
+    <!-- TASK BODY -->
+    <div class="row">
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-1.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Hn</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_1 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_1 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-2.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Pw</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
+            <label for='{{ form.ocr_2 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_2 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-3.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Ph</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
+            <label for='{{ form.ocr_3 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_3 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-4.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Cg</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
+            <label for='{{ form.ocr_4 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_4 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-5.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Ko</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
+            <label for='{{ form.ocr_5 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_5 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-6.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Kl</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
+            <label for='{{ form.ocr_6 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_6 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-7.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: W</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
+            <label for='{{ form.ocr_7 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_7 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-8.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Ca</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
+            <label for='{{ form.ocr_8 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_8 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-9.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Pa</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
+            <label for='{{ form.ocr_9 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_9 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-10.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Po</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_10 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_10 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-11.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Ng</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_11 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_11 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-12.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Em</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_12 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_12 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-13.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Ch</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_13 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_13 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-14.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Ko</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_14 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_14 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-15.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Cu</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_15 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_15 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-16.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Kaun</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_16 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_16 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-17.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: S</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_17 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_17 }}
+        </div>
+
+        <div class="col-md-2 text-center">
+            <img src="{% static 'data/crowdsource_verification/ocr-18.png' %}"/>
+            <p style="font-size: 16px; color: green;">Value: Cw</p>
+        </div>
+        <div class="col-md-2 well" style="height: 125px;">
+            <label for='{{ form.ocr_18 }}'>Is the transcription correct?</label><br>
+            Check if Yes (True):
+            {{ form.ocr_18 }}
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-success" style="font-size: 20px;">Submit</button>
+    </div>
+    <!-- TASK END -->
+</form>

@@ -117,7 +117,7 @@
 					target.style.overflow = overflow;
 					$img.remove();
 				});
-				
+
 			}());
 
 			img.onload = function () {
@@ -219,7 +219,7 @@
 							zoom.move( e.originalEvent.touches[0] || e.originalEvent.changedTouches[0] );
 						});
 				}
-				
+
 				if ($.isFunction(settings.callback)) {
 					settings.callback.call(img);
 				}

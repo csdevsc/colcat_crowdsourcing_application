@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body_block %}
+  <div class="page-header">
+  {% if user.is_authenticated %}
+    <h2>Hello {{ user.username }}! Welcome to MCS Crowdsourcing.</h2>
+  {% else %}
+    <h2>Welcome to MCS Crowdsourcing!</h2>
+  {% endif %}
+  </div>
+
+  <div>
+      <p>The transcription of documents by human effort is often a long and tedious process. The aim of this project is to develop automated programs that are able to recognize human handwriting, and provide efficient and error-free systems for converting information in handwritten form to data-addressable formats that scientists can use to address important research questions.</p>
+      <p>This aim is in relation to an ongoing effort of our research team to preserve and digitalize a large and invaluable dataset of over 116 indigenous languages of Mesoamerica, and several other languages of the world. </p>
+      <p>To develop these programs, we need to first obtain some feedback from individuals on the kinds of tasks that might be successful in automating the transcription process. Your responses in the present experiment will serve this purpose.</p>
+      <p>Thank you for your time and interest!</p>
+  </div>
+{% endblock %}
