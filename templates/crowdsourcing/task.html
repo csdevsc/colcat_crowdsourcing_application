@@ -13,13 +13,6 @@
                 <div id="instructions" style="display:none;">
                     {{ task.instructions|safe }}
                 </div>
-                <h4>Project Information <a href="#" onclick="toggle('information');"><small>show</small></a></h4>
-                <div id="information" style="display:none;">
-                    <p>The transcription of documents by human effort is often a long and tedious process. The aim of this project is to develop automated programs that are able to recognize human handwriting, and provide efficient and error-free systems for converting information in handwritten form to data-addressable formats that scientists can use to address important research questions.</p>
-                    <p>This aim is in relation to an ongoing effort of our research team to preserve and digitalize a large and invaluable dataset of over 116 indigenous languages of Mesoamerica, and several other languages of the world. </p>
-                    <p>To develop these programs, we need to first obtain some feedback from individuals on the kinds of tasks that might be successful in automating the transcription process. Your responses in the present experiment will serve this purpose.</p>
-                    <p>Thank you for your time and interest!</p>
-                </div>
                 <!--<p class="text-right" style="margin-right: 20px;">Have a question or feedback? Please contact <a href="mailto:changsm1@uci.edu">changsm1@uci.edu</a>.</p>-->
             </div>
         </div>
@@ -38,9 +31,9 @@
     {% elif task.task_id = 5 %}
         {% include 'tasks/naming-ranges-2.html' %}
     {% elif task.task_id = 6 %}
-        {% include 'tasks/task-6.html' %}
+        {% include 'tasks/foci-1.html' %}
     {% elif task.task_id = 7 %}
-        {% include 'tasks/task-7.html' %}
+        {% include 'tasks/foci-2.html' %}
     {% elif task.task_id = 8 %}
         {% include 'tasks/task-8.html' %}
     {% endif %}

@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.views.generic import RedirectView
 from crowdsourcing.views import MyRegistrationView
 
+
 admin.autodiscover()
 
 urlpatterns = patterns('',

@@ -3,6 +3,7 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from crowdsourcing.models import Task, OCRTranscription, OCRVerification, CrowdsourceVerification
 from crowdsourcing.models import NamingTranscription1, NamingTranscription2
+from crowdsourcing.models import FociTranscription1, FociTranscription2
 
 # RESOURCES
 
@@ -26,10 +27,18 @@ class NamingTranscription2VerificationResource(resources.ModelResource):
     class Meta:
         model = NamingTranscription2
 
+class FociTranscription1VerificationResource(resources.ModelResource):
+    class Meta:
+        model = FociTranscription1
+
+class FociTranscription2VerificationResource(resources.ModelResource):
+    class Meta:
+        model = FociTranscription2
+
 # ADMINS
 class TaskAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
-    list_display = ('task_id', 'name', 'responses', 'task_type')
+    list_display = ('task_id', 'name', 'task_type')
 
 class OCRTranscriptionAdmin(ImportExportModelAdmin):
     resource_class = OCRTranscriptionResource
@@ -51,6 +60,14 @@ class NamingTranscription2Admin(ImportExportModelAdmin):
     resource_class = NamingTranscription2VerificationResource
     pass
 
+class FociTranscription1Admin(ImportExportModelAdmin):
+    resource_class = FociTranscription1VerificationResource
+    pass
+
+class FociTranscription2Admin(ImportExportModelAdmin):
+    resource_class = FociTranscription2VerificationResource
+    pass
+
 
 admin.site.register(Task, TaskAdmin)
 admin.site.register(OCRTranscription, OCRTranscriptionAdmin)
@@ -58,3 +75,5 @@ admin.site.register(OCRVerification, OCRVerificationAdmin)
 admin.site.register(CrowdsourceVerification, CrowdsourceVerificationAdmin)
 admin.site.register(NamingTranscription1, NamingTranscription1Admin)
 admin.site.register(NamingTranscription2, NamingTranscription2Admin)
+admin.site.register(FociTranscription1, FociTranscription1Admin)
+admin.site.register(FociTranscription2, FociTranscription2Admin)
