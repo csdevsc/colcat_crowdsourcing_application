@@ -2,6 +2,12 @@
 
 {% load staticfiles %}
 
+<style>
+input {
+    width: 100px;
+}
+</style>
+
 <div class="row">
     <div class="col-md-6">
         <img src="{% static 'data/foci/korean-1_25-40.png' %}" style="height: 600px; width: 550px;"/>
@@ -11,7 +17,85 @@
             {% csrf_token %}
             <div class="col-md-6 well" style="height: 600px; overflow-y: scroll;">
                 <div class="inputfields">
-                    {{ form.as_p }}
+                    <table class="table table-bordered">
+                        <tr>
+                            <th></th>
+                            <th>Value</th>
+                            <th>Row</th>
+                            <th>Column</th>
+                            <th>Confidence</th>
+                        </tr>
+                        <tr>
+                        	<td>#1</td>
+                        	<td>{{ form.value_1 }}</td>
+                        	<td>{{ form.row_1 }}</td>
+                        	<td>{{ form.column_1 }}</td>
+                        	<td>{{ form.confidence_1 }}</td>
+                        </tr>
+                        <tr>
+                        	<td>#2</td>
+                        	<td>{{ form.value_2 }}</td>
+                        	<td>{{ form.row_2 }}</td>
+                        	<td>{{ form.column_2 }}</td>
+                        	<td>{{ form.confidence_2 }}</td>
+                        </tr>
+                        <tr>
+                        	<td>#3</td>
+                        	<td>{{ form.value_3 }}</td>
+                        	<td>{{ form.row_3 }}</td>
+                        	<td>{{ form.column_3 }}</td>
+                        	<td>{{ form.confidence_3 }}</td>
+                        </tr>
+                        <tr>
+                        	<td>#4</td>
+                        	<td>{{ form.value_4 }}</td>
+                        	<td>{{ form.row_4 }}</td>
+                        	<td>{{ form.column_4 }}</td>
+                        	<td>{{ form.confidence_4 }}</td>
+                        </tr>
+                        <tr>
+                        	<td>#5</td>
+                        	<td>{{ form.value_5 }}</td>
+                        	<td>{{ form.row_5 }}</td>
+                        	<td>{{ form.column_5 }}</td>
+                        	<td>{{ form.confidence_5 }}</td>
+                        </tr>
+                        <tr>
+                        	<td>#6</td>
+                        	<td>{{ form.value_6 }}</td>
+                        	<td>{{ form.row_6 }}</td>
+                        	<td>{{ form.column_6 }}</td>
+                        	<td>{{ form.confidence_6 }}</td>
+                        </tr>
+                        <tr>
+                        	<td>#7</td>
+                        	<td>{{ form.value_7 }}</td>
+                        	<td>{{ form.row_7 }}</td>
+                        	<td>{{ form.column_7 }}</td>
+                        	<td>{{ form.confidence_7 }}</td>
+                        </tr>
+                        <tr>
+                        	<td>#8</td>
+                        	<td>{{ form.value_8 }}</td>
+                        	<td>{{ form.row_8 }}</td>
+                        	<td>{{ form.column_8 }}</td>
+                        	<td>{{ form.confidence_8 }}</td>
+                        </tr>
+                        <tr>
+                        	<td>#9</td>
+                        	<td>{{ form.value_9 }}</td>
+                        	<td>{{ form.row_9 }}</td>
+                        	<td>{{ form.column_9 }}</td>
+                        	<td>{{ form.confidence_9 }}</td>
+                        </tr>
+                        <tr>
+                        	<td>#10</td>
+                        	<td>{{ form.value_10 }}</td>
+                        	<td>{{ form.row_10 }}</td>
+                        	<td>{{ form.column_10 }}</td>
+                        	<td>{{ form.confidence_10 }}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
     </div>

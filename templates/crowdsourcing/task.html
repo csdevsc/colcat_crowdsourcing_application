@@ -9,8 +9,8 @@
         <div id="info" class="row bg-info">
             <div class="col-md-12">
                 <h2>Task #{{ task.task_id }}: {{ task_name }}</h2>
-                <h4>Instructions <a href="#" onclick="toggle('instructions');"><small>show</small></a></h4>
-                <div id="instructions" style="display:none;">
+                <h4>Instructions <a href="#" onclick="toggle('instructions');"><small>hide/show</small></a></h4>
+                <div id="instructions" style="padding-bottom: 20px;">
                     {{ task.instructions|safe }}
                 </div>
                 <!--<p class="text-right" style="margin-right: 20px;">Have a question or feedback? Please contact <a href="mailto:changsm1@uci.edu">changsm1@uci.edu</a>.</p>-->
@@ -34,8 +34,6 @@
         {% include 'tasks/foci-1.html' %}
     {% elif task.task_id = 7 %}
         {% include 'tasks/foci-2.html' %}
-    {% elif task.task_id = 8 %}
-        {% include 'tasks/task-8.html' %}
     {% endif %}
     <!-- END TASK -->
 

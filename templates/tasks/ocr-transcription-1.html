@@ -2,9 +2,6 @@
 
 {% load staticfiles %}
 
-<!-- ALERT ATTENTION TO INSTRUCTIONS -->
-<div class="alert alert-warning" role="alert">Identify the images to the best of your ability. All characters are english letters.</div>
-
 <form action="/crowdsourcing/task/ocr-transcription-1/" method="post">
     {% csrf_token %}
 
@@ -155,7 +152,7 @@
         </div>
 
     </div>
-    
+
     <div class="text-center">
         <button type="submit" class="btn btn-success" style="font-size: 20px;">Submit</button>
     </div>

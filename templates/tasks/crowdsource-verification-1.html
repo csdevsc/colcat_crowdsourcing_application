@@ -2,9 +2,6 @@
 
 {% load staticfiles %}
 
-<!-- ALERT ATTENTION TO INSTRUCTIONS -->
-<div class="alert alert-warning" role="alert">Check the box if the transcription is correct.</div>
-
 <form action="/crowdsourcing/task/crowdsource-verification-1/" method="post">
     {% csrf_token %}
 
@@ -12,7 +9,7 @@
     <div class="row">
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-1.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Hn</p>
+            <p style="font-size: 25px; color: red;">Value: Hn</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_1 }}'>Are these the same letters?</label><br>
@@ -22,7 +19,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-2.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Pw</p>
+            <p style="font-size: 25px; color: red;">Value: Pw</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
             <label for='{{ form.ocr_2 }}'>Are these the same letters?</label><br>
@@ -32,7 +29,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-3.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Ph</p>
+            <p style="font-size: 25px; color: red;">Value: Ph</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
             <label for='{{ form.ocr_3 }}'>Are these the same letters?</label><br>
@@ -42,7 +39,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-4.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Cg</p>
+            <p style="font-size: 25px; color: red;">Value: Cg</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
             <label for='{{ form.ocr_4 }}'>Are these the same letters?</label><br>
@@ -52,7 +49,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-5.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Ko</p>
+            <p style="font-size: 25px; color: red;">Value: Ko</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
             <label for='{{ form.ocr_5 }}'>Are these the same letters?</label><br>
@@ -62,7 +59,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-6.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Kl</p>
+            <p style="font-size: 25px; color: red;">Value: Kl</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
             <label for='{{ form.ocr_6 }}'>Are these the same letters?</label><br>
@@ -72,7 +69,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-7.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: W</p>
+            <p style="font-size: 25px; color: red;">Value: W</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
             <label for='{{ form.ocr_7 }}'>Are these the same letters?</label><br>
@@ -82,7 +79,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-8.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Ca</p>
+            <p style="font-size: 25px; color: red;">Value: Ca</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
             <label for='{{ form.ocr_8 }}'>Are these the same letters?</label><br>
@@ -92,7 +89,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-9.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Pa</p>
+            <p style="font-size: 25px; color: red;">Value: Pa</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;" style="height: 125px;">
             <label for='{{ form.ocr_9 }}'>Are these the same letters?</label><br>
@@ -102,7 +99,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-10.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Po</p>
+            <p style="font-size: 25px; color: red;">Value: Po</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_10 }}'>Are these the same letters?</label><br>
@@ -112,7 +109,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-11.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Ng</p>
+            <p style="font-size: 25px; color: red;">Value: Ng</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_11 }}'>Are these the same letters?</label><br>
@@ -122,7 +119,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-12.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Em</p>
+            <p style="font-size: 25px; color: red;">Value: Em</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_12 }}'>Are these the same letters?</label><br>
@@ -132,7 +129,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-13.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Ch</p>
+            <p style="font-size: 25px; color: red;">Value: Ch</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_13 }}'>Are these the same letters?</label><br>
@@ -142,7 +139,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-14.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Ko</p>
+            <p style="font-size: 25px; color: red;">Value: Ko</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_14 }}'>Are these the same letters?</label><br>
@@ -152,7 +149,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-15.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Cu</p>
+            <p style="font-size: 25px; color: red;">Value: Cu</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_15 }}'>Are these the same letters?</label><br>
@@ -162,7 +159,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-16.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Kaun</p>
+            <p style="font-size: 25px; color: red;">Value: Kaun</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_16 }}'>Are these the same letters?</label><br>
@@ -172,7 +169,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-17.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: S</p>
+            <p style="font-size: 25px; color: red;">Value: S</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_17 }}'>Are these the same letters?</label><br>
@@ -182,7 +179,7 @@
 
         <div class="col-md-2 text-center">
             <img src="{% static 'data/crowdsource_verification/ocr-18.png' %}"/>
-            <p style="font-size: 25px; color: green;">Value: Cw</p>
+            <p style="font-size: 25px; color: red;">Value: Cw</p>
         </div>
         <div class="col-md-2 well" style="height: 125px;">
             <label for='{{ form.ocr_18 }}'>Are these the same letters?</label><br>
