@@ -1,5 +1,6 @@
 *.pyc
 *.swp
-settings.py
+*.DS_Store
+__pycache__
 migrations/
-db.sqlite3
+colcat_crowdsourcing/settings_private.py
