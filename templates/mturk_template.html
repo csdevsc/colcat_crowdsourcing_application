@@ -59,11 +59,11 @@
     if (pair[0] == "workerId")
       mturkworkerID = pair[1];
   }
-  if (mturkworkerID == "" ) {
+  if (mturkworkerID == "abc123" ) {
     assignment_id_field.innerHTML = 'The link will appear here only if you accept this HIT.';
   } else {
   	mturkworkerID = "abc123";
-    assignment_id_field.innerHTML = '<a target="_blank" href="http://localhost:8000/tasks/naming/001?mtwid=' + mturkworkerID + '"><h4><span style="color: rgb(255, 0, 0);"><b>CLICK HERE TO START THE TASK!</b></span></h4></a>';
+    assignment_id_field.innerHTML = '<a target="_blank" href="http://colcat.calit2.uci.edu:8003/tasks/naming/001?mtwid=' + mturkworkerID + '"><h4><span style="color: rgb(255, 0, 0);"><b>CLICK HERE TO START THE TASK!</b></span></h4></a>';
   }
 // -->
 </script>

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Naming Task{% endblock %}
+
+{% block main %}
+
+{# include 'instructions/naming_01.html' #}
+<div class="col-md-8 col-md-offset-2">
+  <hr>
+  <h4 class="text-center">Transcribe the Grid</h4>
+  <hr>
+  <div id="info-toggle" style="margin-top: 20px;">
+    <input id="btn-info-toggle" type="button" class="btn btn-primary text-center" value="Show Instructions" onclick="showInformation();"/>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8" style="position:relative;">
+    <div style="background-color:white;position:absolute;z-index:1000;width:800px;height: 100px;">
+    </div>
+    <img id="naming_img" class="img-responsive" src="{% static 'data/001.png' %}" data-zoom-image="{% static 'data/001.png' %}"/>
+  </div>
+  <div class="col-md-4" style="position:relative; top: 100px;">
+    <div id="zoom-container" style="border: 2px solid black; height: 400px; width: 400px;"><p class="text-center">ZOOMED IN IMAGE</p></div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="input-container well center-block" style="width: 75%; margin-top: 50px;">
+  <form class="form-inline" action="" method="post">{% csrf_token %}
+    <table>
+    {{ wizard.management_form }}
+    {% if wizard.form.forms %}
+        {{ wizard.form.management_form }}
+        {% for form in wizard.form.forms %}
+          <h1>{{ form.field.label }}</h1>
+        {% endfor %}
+    {% else %}
+        {% for field in wizard.form %}
+          {% if field.errors %}
+            {% for error in field.errors %}
+            <div class="text-center">
+              <h4>{{ field.label }}</h4>
+              <h5>{{ field }} <small class="label label-danger">{{ error }}</small></h5>
+              <br>
+            </div>
+            {% endfor %}
+          {% else %}
+            <div class="text-center">
+              <h4>{{ field.label }}</h4>
+              <h5>{{ field }}</h5>
+              <br>
+            </div>
+          {% endif %}
+        {% endfor %}
+    {% endif %}
+    </table>
+    <div class="text-center">
+      {% if wizard.steps.prev %}
+      <button class="btn btn-primary" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Previous</button>
+      {% endif %}
+      <button class="btn btn-primary" type="submit" value="submit">Continue</button>
+    </div>
+  </form>
+</div>
+<!-- END FORM -->
+
+<div id="progress-count">
+  <h4 class="text-center">
+    <span id="current-cell" class="text-primary">{{ wizard.steps.step1 }}</span> box out of {{ wizard.steps.count }} boxes completed.
+  </h4>
+  <br>
+</div>
+
+<script> // IMAGE ZOOM SCRIPT
+    $("#naming_img").elevateZoom({zoomWindowPosition: "zoom-container",
+                                  zoomWindowHeight: 400,
+                                  zoomWindowWidth: 400,
+                                  borderSize: 2,
+                                  tint:true,
+                                  tintColour:'#555',
+                                  tintOpacity:0.1});
+</script>
+
+{% endblock %}

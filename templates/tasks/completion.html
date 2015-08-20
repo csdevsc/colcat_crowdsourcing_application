@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="jumbotron text-center" style="padding: 10px;">
+  <h3>You have completed this task!</h3>
+  <h4>Thank you for participating in this study.</h4>
+  <p>
+    If you are interested in learning more about our research, please click the button below.
+  </p>
+  <p><a class="btn btn-primary btn-lg" href="http://colcat.calit2.uci.edu/" target="_blank">Learn more</a></p>
+</div>
+
+<div class="text-center">
+  <h4>Enter the following code into the box on Mechanical Turk and submit your HIT.<br>Your submission will be reviewed within a week.</h4>
+  <h2>CODE: <span class="text-success">{{ key }}</span></h2>
+
+  <br>
+
+  <h4>
+      If you have any comments about this HIT, please enter them below:
+  </h4>
+
+  <textarea class="form-control" name="comments" id="comments" rows="4" cols="100"></textarea>
+  <br>
+  <button class="btn btn-default btn-lg">SEND COMMENTS</button>
+  <br>
+  <h4></h4>
+  <p>
+    If you have any questions, concerns, or comments, please <a href="mailto:">send us an e-mail</a>.
+  </p>
+</div>
+{% endblock %}
