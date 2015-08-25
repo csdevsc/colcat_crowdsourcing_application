@@ -16,6 +16,9 @@ def index(request):
 def mturk_template(request):
     return render(request, 'mturk_template.html', {})
 
+def prescreen(request):
+    return render(request, 'tasks/prescreen.html', {})
+
 class Naming_001_Wizard(SessionWizardView):
     template_name = 'tasks/naming.html'
 
