@@ -27,105 +27,167 @@ Tips:
 }
 </style>
 
+<script>
+function checkAnswers() {
+  var incorrect = 0, index;
+
+  var answer_01 = document.getElementById("question_01").value;
+  var answer_02 = document.getElementById("id_0-confidence_a0_0").checked;
+  var answer_03 = document.getElementById("question_03").value;
+  var answer_04 = document.getElementById("question_04").value;
+  var answer_05 = document.getElementById("question_05").value;
+  var answer_06 = document.getElementById("question_06").value;
+  var answer_07 = document.getElementById("question_07").value;
+  var answer_08 = document.getElementById("question_08").value;
+  var answer_09 = document.getElementById("question_09").value;
+  var answer_10 = document.getElementById("question_10").value;
+
+  if ((answer_01 == 'Km') && (answer_02) && (answer_03 == 'Hn') &&
+      (answer_04 == 'Pink-') && (answer_05 == 1) && (answer_06 == 1) &&
+      (answer_07 == 10) && (answer_08 == 41) && (answer_09 = 330) && (answer_10 == 'BLUE')) {
+    $('#alert-correct').show();
+  } else {
+    $('#alert-incorrect').show();
+  }
+}
+
+function clearInputs() {
+  var inputs, index;
+  inputs = document.getElementsByTagName('input');
+  for (index = 0; index < inputs.length; ++index) {
+    inputs[index].value = "";
+    inputs[index].checked = false;
+  }
+}
+
+function tryAgain() {
+  scroll(0,0);
+  clearInputs();
+  $('#alert-incorrect').hide();
+}
+</script>
+
 <div class="row" style="margin-bottom: 50px;">
   <div class="col-md-8 col-md-offset-2">
     <hr>
     <h4 class="text-center">Prescreen Task</h4>
     <hr>
       <h5 class="text-danger">Answer the following questions carefully and correctly. Your ability to do our task depends on you correctly answering all of the questions below. If you answer any questions incorrectly, you will be unable to do our task. Pay attention to the hints (if they are provided for that question). There are 10 questions total. For questions that ask you to identify the characters in an image, make sure you enter everything EXACTLY as it appears (this includes capitalizations and hyphens)! </h5>
+      <h5>
+        You can attempt these prescreen tasks as many times as you would like. You will not be able to proceed to the actual task until you correctly answer all questions.
+        If you are unable to complete this HIT, please return the HIT or let it expire. Abandoned and returned HITs will not negatively affect your reputation on Mechanical Turk. We are not able to access these statistics, as they are not provided to Requesters.
+      </h5>
+      <h5>
+        If you have any concerns or questions about this policy, please contact colcatcrowdsource@calit2.uci.edu.
+      </h5>
   </div>
 </div>
 
-<form>
-<div class="container text-center question">
-  <div class="row">
-    <img src="{% static 'data/prescreen/q1.png' %}" style="height: 100px;"/>
+<div class="container">
+  <div class="text-center question">
+    <div class="row">
+      <img src="{% static 'data/prescreen/q1.png' %}" style="height: 100px;"/>
+    </div>
+    <h5>
+      <label for="question_01">Please enter the characters you see in the image above:</label><br>
+      <input id="question_01" name="question_01" type="text" class="input-lg"/>
+    </h5>
   </div>
-  <h5>
-    <label for="question_01">Please enter the characters you see in the image above:</label><br>
-    <input id="question_01" name="question_01" type="text" class="input-lg"/>
-  </h5>
+
+  <div class="text-center question">
+    <h4>How sure are you?</h4>
+    <p>Please select "1 (Not Sure)" as the answer to this question.</p>
+    <h5>
+      <label for="id_0-confidence_a0_0"><input id="id_0-confidence_a0_0" name="question_02" type="radio" value="1"> 1 (Not Sure)</label>
+      <label for="id_0-confidence_a0_1"><input id="id_0-confidence_a0_1" name="question_02" type="radio" value="2"> 2</label>
+      <label for="id_0-confidence_a0_2"><input id="id_0-confidence_a0_2" name="question_02" type="radio" value="3"> 3</label>
+      <label for="id_0-confidence_a0_3"><input id="id_0-confidence_a0_3" name="question_02" type="radio" value="4"> 4</label>
+      <label for="id_0-confidence_a0_4"><input id="id_0-confidence_a0_4" name="question_02" type="radio" value="5"> 5</label>
+      <label for="id_0-confidence_a0_5"><input id="id_0-confidence_a0_5" name="question_02" type="radio" value="6"> 6</label>
+      <label for="id_0-confidence_a0_6"><input id="id_0-confidence_a0_6" name="question_02" type="radio" value="7"> 7</label>
+      <label for="id_0-confidence_a0_7"><input id="id_0-confidence_a0_7" name="question_02" type="radio" value="8"> 8</label>
+      <label for="id_0-confidence_a0_8"><input id="id_0-confidence_a0_8" name="question_02" type="radio" value="9"> 9 (Very Sure)</label>
+    </h5>
+  </div>
+
+  <div class="container text-center question">
+    <h5>
+      <label for="question_03">Enter the following into the box below: "Hn"</label><br>
+      <input id="question_03" name="question_03" type="text" class="input-lg"/>
+    </h5>
+  </div>
+
+  <div class="container text-center question">
+    <div class="row">
+      <img src="{% static 'data/prescreen/q4.png' %}" style="height: 100px;"/>
+    </div>
+    <h5>
+      <label for="question_04">Please enter the characters you see in the image above:</label><br>
+      <input id="question_04" name="question_04" type="text" class="input-lg"/>
+    </h5>
+  </div>
+
+  <div class="container text-center question">
+    <h4>Use the image below for the next 5 questions.</h4>
+    <br>
+    <div class="row">
+      <img src="{% static 'data/prescreen/q5-9.png' %}" class="img img-responsive"/>
+    </div>
+    <br>
+    <h5>
+      <label for="question_05">How many boxes are <strong>NOT</strong> empty in <strong>column 3</strong>?</label><br>
+      <input id="question_05" name="question_05" type="text" class="input-lg"/>
+    </h5>
+    <br>
+    <h5>
+      <label for="question_06">How many boxes have values in <strong>row D</strong>?</label><br>
+      <input id="question_06" name="question_06" type="text" class="input-lg"/>
+    </h5>
+    <br>
+    <h5>
+      <label for="question_07">Enter the number 10 into the box below.</label><br>
+      <input id="question_07" name="question_07" type="text" class="input-lg"/>
+    </h5>
+    <br>
+    <h5>
+      <label for="question_08">How many columns does the grid have?</label><br>
+      <small>HINT: Don't forget to include the column on the way left that isn't connected!</small><br>
+      <input id="question_08" name="question_08" type="text" class="input-lg"/>
+    </h5>
+    <br>
+    <h5>
+      <label for="question_09">How many boxes does the grid have?</label><br>
+      <small>HINT: There are (300 + 30) boxes!</small><br>
+      <input id="question_09" name="question_09" type="text" class="input-lg"/>
+    </h5>
+    <br>
+    <div class="row">
+      <img src="{% static 'data/prescreen/q10.png' %}" style="height: 100px;"/>
+    </div>
+    <h5>
+      <label for="question_10">Enter "BLUE" into the box below. Ignore the image above.</label><br>
+      <small>HINT: Make sure you type it EXACTLY as it appears in the quotes!</small><br>
+      <input id="question_10" name="question_10" type="text" class="input-lg"/>
+    </h5>
+  </div>
+  <div id="alerts" style="width: 600px; margin: 0 auto;">
+    <div id="alert-correct" class="alert alert-success fade in" style="display: none;">
+      <strong>Success!</strong> You successfully completed the prescreen task. Please click the button below to continue to the actual task.
+      <br><br>
+      <button type="button" class="btn btn-default btn-block">Continue to task</button>
+    </div>
+
+    <div id="alert-incorrect" class="alert alert-danger fade in" style="display: none;">
+      <strong>Uh oh!</strong> It seems like you didn't answer all of the questions correctly. You can either try again until you get all the answers correct, or you can return/abandon this hit.
+      <br><br>
+      <button type="button" class="btn btn-default btn-block" onclick="tryAgain();">Try again</button>
+    </div>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary btn-lg" type="submit" value="submit" onclick="checkAnswers()">SUBMIT</button>
+  </div>
+
 </div>
 
-<div class="text-center question">
-  <h4>How sure are you?</h4>
-  <p>Please select "1 (Not Sure)" as the answer to this question.</p>
-  <h5>
-    <label for="id_0-confidence_a0_0"><input id="id_0-confidence_a0_0" name="question_02" type="radio" value="1"> 1 (Not Sure)</label>
-    <label for="id_0-confidence_a0_1"><input id="id_0-confidence_a0_1" name="question_02" type="radio" value="2"> 2</label>
-    <label for="id_0-confidence_a0_2"><input id="id_0-confidence_a0_2" name="question_02" type="radio" value="3"> 3</label>
-    <label for="id_0-confidence_a0_3"><input id="id_0-confidence_a0_3" name="question_02" type="radio" value="4"> 4</label>
-    <label for="id_0-confidence_a0_4"><input id="id_0-confidence_a0_4" name="question_02" type="radio" value="5"> 5</label>
-    <label for="id_0-confidence_a0_5"><input id="id_0-confidence_a0_5" name="question_02" type="radio" value="6"> 6</label>
-    <label for="id_0-confidence_a0_6"><input id="id_0-confidence_a0_6" name="question_02" type="radio" value="7"> 7</label>
-    <label for="id_0-confidence_a0_7"><input id="id_0-confidence_a0_7" name="question_02" type="radio" value="8"> 8</label>
-    <label for="id_0-confidence_a0_8"><input id="id_0-confidence_a0_8" name="question_02" type="radio" value="9"> 9 (Very Sure)</label>
-  </h5>
-</div>
-
-<div class="container text-center question">
-  <h5>
-    <label for="question_03">Enter the following into the box below: "Hn"</label><br>
-    <input id="question_03" name="question_03" type="text" class="input-lg"/>
-  </h5>
-</div>
-
-<div class="container text-center question">
-  <div class="row">
-    <img src="{% static 'data/prescreen/q4.png' %}" style="height: 100px;"/>
-  </div>
-  <h5>
-    <label for="question_04">Please enter the characters you see in the image above:</label><br>
-    <input id="question_04" name="question_04" type="text" class="input-lg"/>
-  </h5>
-</div>
-
-<div class="container text-center question">
-  <h4>Use the image below for the next 5 questions.</h4>
-  <br>
-  <div class="row">
-    <img src="{% static 'data/prescreen/q5-9.png' %}" class="img img-responsive"/>
-  </div>
-  <br>
-  <h5>
-    <label for="question_05">How many boxes are <strong>NOT</strong> empty in <strong>column 3</strong>?</label><br>
-    <input id="question_05" name="question_05" type="text" class="input-lg"/>
-  </h5>
-  <br>
-  <h5>
-    <label for="question_06">How many boxes have values in <strong>row D</strong>?</label><br>
-    <input id="question_06" name="question_06" type="text" class="input-lg"/>
-  </h5>
-  <br>
-  <h5>
-    <label for="question_07">Enter the number 10 into the box below.</label><br>
-    <input id="question_07" name="question_07" type="text" class="input-lg"/>
-  </h5>
-  <br>
-  <h5>
-    <label for="question_08">How many columns does the grid have?</label><br>
-    <small>HINT: Don't forget to include the column on the way left that isn't connected!</small><br>
-    <input id="question_08" name="question_08" type="text" class="input-lg"/>
-  </h5>
-  <br>
-  <h5>
-    <label for="question_09">How many boxes does the grid have?</label><br>
-    <small>HINT: There are (300 + 30) boxes!</small><br>
-    <input id="question_09" name="question_09" type="text" class="input-lg"/>
-  </h5>
-  <br>
-  <div class="row">
-    <img src="{% static 'data/prescreen/q10.png' %}" style="height: 100px;"/>
-  </div>
-  <h5>
-    <label for="question_10">Enter "BLUE" into the box below. Ignore the image above.</label><br>
-    <small>HINT: Make sure you type it EXACTLY as it appears in the quotes!</small><br>
-    <input id="question_10" name="question_10" type="text" class="input-lg"/>
-  </h5>
-</div>
-<div class="text-center">
-  <input class="btn btn-primary btn-lg" value="SUBMIT"/>
-</div>
-</form>
 <br><br><br>
 {% endblock %}
