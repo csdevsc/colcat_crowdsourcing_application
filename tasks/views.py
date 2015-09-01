@@ -2,14 +2,28 @@ from django.shortcuts import render, render_to_response
 from formtools.wizard.views import SessionWizardView
 from tasks.models import Task_Naming_001, Task_Foci_001, Task_Mapping_001
 from django.utils.crypto import get_random_string
+from tasks.imports import *
+import random
 
-# Helper functions.
+# Helper functions
 def generate_key():
     """Generate random key for each task"""
     unique_id = get_random_string(length=8)
     return unique_id
 
-# Create your views here.
+def get_form_list(request, task):
+    x = request.GET.get('mtwid')
+    random.seed(x)
+    if task == 'foci':
+        return Foci_001_Wizard.as_view(sorted(Form_Task_Foci_001, key=lambda r:random.random()))(request)
+    elif task == 'naming':
+        return Naming_001_Wizard.as_view(sorted(Form_Task_Naming_001, key=lambda r:random.random()))(request)
+    elif task == 'mapping':
+        return Mapping_001_Wizard.as_view(sorted(Form_Task_Mapping_001, key=lambda r:random.random()))(request)
+    else:
+        return render(request, 'error.html', {})
+
+# Views
 def index(request):
     return render(request, 'tasks/index.html', {})
 

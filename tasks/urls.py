@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^mturk-template/', views.mturk_template, name='mturk template'),
     url(r'^prescreen/', views.prescreen, name='prescreen'),
-    url(r'^foci/001', Foci_001_Wizard.as_view(Form_Task_Foci_001)),
-    url(r'^naming/001', Naming_001_Wizard.as_view(Form_Task_Naming_001)),
-    url(r'^mapping/001', Mapping_001_Wizard.as_view(Form_Task_Mapping_001)),
+    url(r'^foci/001', views.get_form_list, {'task' : 'foci'}),
+    url(r'^naming/001', views.get_form_list, {'task': 'naming'}),
+    url(r'^mapping/001', views.get_form_list, {'task' : 'mapping'}),
 ]
