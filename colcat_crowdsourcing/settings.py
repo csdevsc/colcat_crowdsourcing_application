@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'formtools',
     'tasks',
+    'homepage',
 )
 
 MIDDLEWARE_CLASSES = (

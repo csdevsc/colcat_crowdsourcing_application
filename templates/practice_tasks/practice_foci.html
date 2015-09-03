@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Practice Foci{% endblock %}
+
+{% block main %}
+<script>
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+
+function redirectTask() {
+  var mtwid = getURLParameter('mtwid');
+  window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/foci/001?mtwid=" + mtwid);
+}
+</script>
+
+<div class="row" style="margin-bottom: 50px;">
+  <div class="col-md-8 col-md-offset-2">
+    <hr>
+    <h4 class="text-center">Practice Task</h4>
+    <hr>
+      <h5 class="text-danger">
+        The following questions are provided to allow you to familiarize yourself with our actual task. You can attempt these questions as many times as you like.
+      </h5>
+      <h5>
+        If you have any concerns or questions about this policy, please contact colcatcrowdsource@calit2.uci.edu.
+      </h5>
+  </div>
+</div>
+
+<div class="text-center">
+  <button class="btn btn-primary btn-lg" type="submit" value="submit" onclick="redirectTask()">SUBMIT</button>
+</div>
+
+{% endblock %}

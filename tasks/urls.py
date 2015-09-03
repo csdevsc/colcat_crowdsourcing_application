@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^mturk-template/', views.mturk_template, name='mturk template'),
     url(r'^prescreen/', views.prescreen, name='prescreen'),
     url(r'^foci/001', views.get_form_list, {'task' : 'foci'}),
+    url(r'^practice-foci', views.practice_foci, {}),
     url(r'^naming/001', views.get_form_list, {'task': 'naming'}),
     url(r'^mapping/001', views.get_form_list, {'task' : 'mapping'}),
 ]

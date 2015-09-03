@@ -33,6 +33,9 @@ def mturk_template(request):
 def prescreen(request):
     return render(request, 'tasks/prescreen.html', {})
 
+def practice_foci(request):
+    return render(request, 'practice_tasks/practice_foci.html', {})
+    
 class Naming_001_Wizard(SessionWizardView):
     template_name = 'tasks/naming.html'
 
@@ -50,7 +53,7 @@ class Naming_001_Wizard(SessionWizardView):
                 setattr(instance, field, value)
         instance.save()
         # save with key
-        return render_to_response('tasks/completion.html', {'key': key})
+        return render(request, 'tasks/completion.html', {'key': key})
 
 class Foci_001_Wizard(SessionWizardView):
     template_name = 'tasks/foci.html'
@@ -69,7 +72,7 @@ class Foci_001_Wizard(SessionWizardView):
                 setattr(instance, field, value)
         instance.save()
         # save with key
-        return render_to_response('tasks/completion.html', {'key': key})
+        return render(request, 'tasks/completion.html', {'key': key})
 
 class Mapping_001_Wizard(SessionWizardView):
     template_name = 'tasks/mapping.html'
@@ -88,4 +91,4 @@ class Mapping_001_Wizard(SessionWizardView):
                 setattr(instance, field, value)
         instance.save()
         # save with key
-        return render_to_response('tasks/completion.html', {'key': key})
+        return render(request, 'tasks/completion.html', {'key': key})

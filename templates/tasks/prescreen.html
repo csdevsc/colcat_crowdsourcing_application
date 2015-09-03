@@ -29,8 +29,6 @@ Tips:
 
 <script>
 function checkAnswers() {
-  var incorrect = 0, index;
-
   var answer_01 = document.getElementById("question_01").value;
   var answer_02 = document.getElementById("id_0-confidence_a0_0").checked;
   var answer_03 = document.getElementById("question_03").value;
@@ -64,6 +62,15 @@ function tryAgain() {
   scroll(0,0);
   clearInputs();
   $('#alert-incorrect').hide();
+}
+
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+
+function redirectPractice() {
+  var mtwid = getURLParameter('mtwid');
+  window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/practice-foci?mtwid=" + mtwid);
 }
 </script>
 
@@ -174,7 +181,7 @@ function tryAgain() {
     <div id="alert-correct" class="alert alert-success fade in" style="display: none;">
       <strong>Success!</strong> You successfully completed the prescreen task. Please click the button below to continue to the actual task.
       <br><br>
-      <button type="button" class="btn btn-default btn-block">Continue to task</button>
+      <button type="button" class="btn btn-default btn-block" onclick="redirectPractice();">Continue to task</button>
     </div>
 
     <div id="alert-incorrect" class="alert alert-danger fade in" style="display: none;">
