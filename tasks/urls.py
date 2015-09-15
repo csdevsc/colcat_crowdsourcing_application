@@ -9,6 +9,7 @@ from tasks.imports import *
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^mturk-template/', views.mturk_template, name='mturk template'),
+    url(r'^disclaimer/', views.disclaimer, name='disclaimer'),
     url(r'^prescreen/', views.prescreen, name='prescreen'),
     url(r'^foci/001', views.get_form_list, {'task' : 'foci'}),
     url(r'^practice-foci', views.practice_foci, {}),

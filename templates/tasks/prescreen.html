@@ -21,12 +21,6 @@ Tips:
 {% block title %}Prescreen{% endblock %}
 
 {% block main %}
-<style>
-.question {
-  margin-bottom: 60px;
-}
-</style>
-
 <script>
 function checkAnswers() {
   var answer_01 = document.getElementById("question_01").value;
@@ -43,6 +37,7 @@ function checkAnswers() {
   if ((answer_01 == 'Km') && (answer_02) && (answer_03 == 'Hn') &&
       (answer_04 == 'Pink-') && (answer_05 == 1) && (answer_06 == 1) &&
       (answer_07 == 10) && (answer_08 == 41) && (answer_09 = 330) && (answer_10 == 'BLUE')) {
+    $('#alert-incorrect').hide();
     $('#alert-correct').show();
   } else {
     $('#alert-incorrect').show();
@@ -183,7 +178,7 @@ function redirectPractice() {
       <br><br>
       <button type="button" class="btn btn-default btn-block" onclick="redirectPractice();">Continue to task</button>
     </div>
-
+    <br>
     <div id="alert-incorrect" class="alert alert-danger fade in" style="display: none;">
       <strong>Uh oh!</strong> It seems like you didn't answer all of the questions correctly. You can either try again until you get all the answers correct, or you can return/abandon this hit.
       <br><br>
@@ -191,6 +186,7 @@ function redirectPractice() {
     </div>
   </div>
   <div class="text-center">
+    <br>
     <button class="btn btn-primary btn-lg" type="submit" value="submit" onclick="checkAnswers()">SUBMIT</button>
   </div>
 

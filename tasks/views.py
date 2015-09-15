@@ -30,12 +30,15 @@ def index(request):
 def mturk_template(request):
     return render(request, 'mturk_template.html', {})
 
+def disclaimer(request):
+    return render(request, 'tasks/disclaimer.html', {})
+
 def prescreen(request):
     return render(request, 'tasks/prescreen.html', {})
 
 def practice_foci(request):
     return render(request, 'practice_tasks/practice_foci.html', {})
-    
+
 class Naming_001_Wizard(SessionWizardView):
     template_name = 'tasks/naming.html'
 
@@ -53,7 +56,7 @@ class Naming_001_Wizard(SessionWizardView):
                 setattr(instance, field, value)
         instance.save()
         # save with key
-        return render(request, 'tasks/completion.html', {'key': key})
+        return render_to_response('tasks/completion.html', {'key': key})
 
 class Foci_001_Wizard(SessionWizardView):
     template_name = 'tasks/foci.html'
@@ -72,7 +75,7 @@ class Foci_001_Wizard(SessionWizardView):
                 setattr(instance, field, value)
         instance.save()
         # save with key
-        return render(request, 'tasks/completion.html', {'key': key})
+        return render_to_response('tasks/completion.html', {'key': key})
 
 class Mapping_001_Wizard(SessionWizardView):
     template_name = 'tasks/mapping.html'
@@ -83,7 +86,7 @@ class Mapping_001_Wizard(SessionWizardView):
 
     def done(self, form_list, **kwargs):
         key = generate_key()
-        instance = Task_Foci_001()
+        instance = Task_Mapping_001()
         setattr(instance, 'task_response_key', key)
         setattr(instance, 'worker_id', self.w_id)
         for form in form_list:

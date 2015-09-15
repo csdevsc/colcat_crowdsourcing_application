@@ -13,6 +13,111 @@ function redirectTask() {
   var mtwid = getURLParameter('mtwid');
   window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/foci/001?mtwid=" + mtwid);
 }
+
+correct = 0;
+
+function checkVal(num){
+  question = 'practice_' + num;
+  var answer = document.getElementById(question).value;
+  if (question == 'practice_03') {
+    if (answer == 'Hw') {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = '<p>You are correct!</p>';
+      correct++;
+    } else {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = '<p>You are incorrect. Please try again.</p>';
+    }
+  } else if (question == 'practice_08') {
+    if (answer == 'Ck') {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = '<p>You are correct!</p>';
+      correct++;
+    } else {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = '<p>You are incorrect. Please try again.</p>';
+    }
+  } else if (question == 'practice_11') {
+    if (answer == 'Hl' || answer == 'HI') {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = 'You are correct! However, please be aware that this value may have been HI or HL (or not?).';
+      correct = 2;
+    } else {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = 'You are incorrect. Please try again. (Stuck? View the answer <span onclick="showAnswer(11)" style="color: red;">here</span>)';
+    }
+  } else if (question == 'practice_12') {
+    if (answer == 'Pink-') {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = 'You are correct! Good job not forgetting the hyphen. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces.';
+      correct = 2;
+    } else {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = 'You are incorrect. Please try again. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces. (Stuck? View the answer <span onclick="showAnswer(12)" style="color: red;">here</span>)';
+    }
+  } else {
+    if (answer == '') {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = '<p>You are correct!</p>';
+    } else {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = '<p>You are incorrect. Please try again.</p>';
+    }
+  }
+  proceed(num);
+}
+
+function checkAnswers(panel) {
+  if (panel == 1) {
+    for (var i = 1; i < 11; i++) {
+      var num;
+      if (i < 10) {
+        num = '0' + i;
+      } else {
+        num = i.toString();
+      }
+      checkVal(num);
+    }
+  } else if (panel == 2) {
+    $("#answer_11").hide();
+    checkVal("11");
+  } else if (panel == 3) {
+    $("#answer_12").hide();
+    checkVal("12");
+  }
+}
+
+function proceed(num){
+  if (correct == 2) {
+    if (num == '12') {
+      $("#continueTask").show();
+    } else if (num > 10) {
+      $("#continue2").show();
+      correct = 0;
+    } else {
+      $("#continue1").show();
+      correct = 0;
+    }
+  }
+}
+
+function nextPanel(num) {
+  if (num == 2) {
+    $("#panel_1").hide();
+    $("#panel_2").show();
+  } else if (num == 3) {
+    $("#panel_2").hide();
+    $("#panel_3").show();
+  }
+}
+
+function showAnswer(num) {
+  if (num == 11) {
+    $("#answer_11").show();
+  } else if (num == 12) {
+    $("#answer_12").show();
+  }
+}
 </script>
 
 <div class="row" style="margin-bottom: 50px;">
@@ -21,16 +126,132 @@ function redirectTask() {
     <h4 class="text-center">Practice Task</h4>
     <hr>
       <h5 class="text-danger">
-        The following questions are provided to allow you to familiarize yourself with our actual task. You can attempt these questions as many times as you like.
+        The following questions are provided to allow you to familiarize yourself with our actual task. You can attempt these questions as many times as you like. Please be aware that you will not know if an answer is correct or incorrect in the actual task.
       </h5>
       <h5>
-        If you have any concerns or questions about this policy, please contact colcatcrowdsource@calit2.uci.edu.
+        If you have any concerns or questions about the task, please contact colcatcrowdsource@calit2.uci.edu.
       </h5>
   </div>
 </div>
 
-<div class="text-center">
-  <button class="btn btn-primary btn-lg" type="submit" value="submit" onclick="redirectTask()">SUBMIT</button>
+<div>
+  <div class="row">
+    <div class="col-md-4" style="position:relative;">
+      <img id="foci_img" class="img-responsive" src="{% static 'practice.png' %}" data-zoom-image="{% static 'practice.png' %}" style="height: 600px;"/>
+    </div>
+    <div class="col-md-3" style="position:relative; top: 50px;">
+      <div id="zoom-container" style="border: 2px solid black; height: 400px; width: 250px;"><p class="text-center">ZOOMED IN IMAGE</p></div>
+    </div>
+    <div id="panel_1" class="col-md-5 well">
+      <table class="table table-striped table-bordered">
+        <h4 class="text-center">COLUMN 0</h4>
+        <p>Fill out the values for column 0. Not every cell will have a value. Once you answer the question correctly, a button to continue will appear.</p>
+        <thead>
+          <td>ROW</td>
+          <td>VALUE</td>
+          <td>RESULT</td>
+        </thead>
+        <tr>
+          <td>A</td>
+          <td><input id="practice_01" type="text"/></td>
+          <td id="result_01"></td>
+        </tr>
+        <tr>
+          <td>B</td>
+          <td><input id="practice_02" type="text"/></td>
+          <td id="result_02"></td>
+        </tr>
+        <tr>
+          <td>C</td>
+          <td><input id="practice_03" type="text"/></td>
+          <td id="result_03"></td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td><input id="practice_04" type="text"/></td>
+          <td id="result_04"></td>
+        </tr>
+        <tr>
+          <td>E</td>
+          <td><input id="practice_05" type="text"/></td>
+          <td id="result_05"></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td><input id="practice_06" type="text"/></td>
+          <td id="result_06"></td>
+        </tr>
+        <tr>
+          <td>G</td>
+          <td><input id="practice_07" type="text"/></td>
+          <td id="result_07"></td>
+        </tr>
+        <tr>
+          <td>H</td>
+          <td><input id="practice_08" type="text"/></td>
+          <td id="result_08"></td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td><input id="practice_09" type="text"/></td>
+          <td id="result_09"></td>
+        </tr>
+        <tr>
+          <td>J</td>
+          <td><input id="practice_10" type="text"/></td>
+          <td id="result_10"></td>
+        </tr>
+      </table>
+      <br>
+      <div class="text-center" style="padding-bottom: 20px;">
+              <button class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(1);">Check Answers</button>
+      </div>
+
+      <div id="continue1" class="text-center" style="display: none;">
+        <button class="btn btn-primary" type="submit" value="submit" onclick="nextPanel(2);">Continue</button>
+      </div>
+    </div>
+
+    <div id="panel_2" class="col-md-5 well" style="display: none;">
+      <h4>Enter the value of box D7 below</h4>
+      <input id="practice_11" type="text"/>
+      <p id="result_11"></p>
+      <p id="answer_11" style="display: none;">The answer is Hi or Hl.</p>
+
+      <br>
+      <div class="text-center" style="padding-bottom: 20px;">
+        <button class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(2);">Check Answers</button>
+      </div>
+      <br>
+      <div id="continue2" class="text-center" style="display: none;">
+        <button class="btn btn-primary" type="submit" value="submit" onclick="nextPanel(3);">Continue</button>
+      </div>
+    </div>
+
+    <div id="panel_3" class="col-md-5 well" style="display: none;">
+      <h4>Enter the value of box H10 below</h4>
+      <input id="practice_12" type="text"/>
+      <p id="result_12"></p>
+      <p id="answer_12" style="display: none;">The answer is Pink-.</p>
+
+      <br>
+      <div class="text-center" style="padding-bottom: 20px;">
+        <button class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(3);">Check Answers</button>
+      </div>
+      <div id="continueTask" class="text-center" style="display: none;">
+        <button class="btn btn-primary btn-lg" type="submit" value="submit" onclick="redirectTask()">Go To Task</button>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+
+
+<script> // IMAGE ZOOM SCRIPT
+$("#foci_img").elevateZoom({zoomWindowPosition: "zoom-container",
+                              zoomWindowWidth:250,
+                              zoomWindowHeight:400 });
+</script>
 
 {% endblock %}

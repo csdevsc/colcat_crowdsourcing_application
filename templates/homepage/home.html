@@ -13,14 +13,20 @@ function redirect() {
   var name = getURLParameter('name');
   window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/mturk-template?name=" + name)
 }
+
+function load() {
+  var name = getURLParameter('name');
+  var demo = document.getElementById('start-demo');
+  demo.innerHTML = '<a target="_blank" href="http://colcat.calit2.uci.edu:8003/tasks/mturk-template?name=' + name + '"><button class="btn btn-lg btn-success"><b>START DEMO</b></button></a>';
+}
 </script>
 
 <div class="container">
 
   <div class="jumbotron">
     <h3>Task Demo</h3>
-    <p class="lead">Click the button below to start a sample Foci task. The demo includes the features listed below.</p>
-    <button class="btn btn-lg btn-success" onclick="redirect();">Start Demo</a>
+    <p class="lead">Click the button below to start a sample Foci task. The demo will open in a new tab and includes the features listed below.</p>
+    <div id="start-demo"></div>
   </div>
 
   <div class="row">
@@ -51,5 +57,9 @@ function redirect() {
     <p>&copy; ColCat 2015</p>
   </footer>
 
-</div> <!-- /container -->
+</div>
+
+<script>
+load();
+</script>
 {% endblock %}

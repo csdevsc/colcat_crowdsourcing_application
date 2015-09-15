@@ -1,0 +1,69 @@
+<!-- PRESCREEN TASKS
+1. Please enter the characters you see in this image.
+2. Select "7" as the answer to the following question.
+3. Enter the value "Hn" into this box
+4. Enter what you see in this image into the box. (Heyen-)
+* Use the following image for the next 5 questions
+5. How many boxes are NOT empty in column 3?
+6. How many boxes have values in row D?
+7. Enter the following into the box: "10!"
+8. How many columns does the following grid have?
+9. How many boxes are in this image? Answer the following equation: (8 * 40) + 10
+10. Enter "BLUE" into the box below. Ignore the image.
+Tips:
+3. Make sure you enter everything EXACTLY as it appears!
+
+-->
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Disclaimer{% endblock %}
+
+{% block main %}
+<script>
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+
+function redirectPrescreen() {
+  var agree = document.getElementById("disclaimer-agree").checked;
+  if (agree) {
+    var mtwid = getURLParameter('mtwid');
+    window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/prescreen?mtwid=" + mtwid);
+  } else {
+    $('#alert-incorrect').show();
+  }
+
+}
+</script>
+
+<div class="row" style="margin-bottom: 50px;">
+  <div class="col-md-8 col-md-offset-2">
+    <hr>
+    <h4 class="text-center">Disclaimer</h4>
+    <hr>
+      <h5>
+        -- Insert research dislaimer text here --
+      </h5>
+      <h5>
+        If you have any concerns or questions about this study, please contact colcatcrowdsource@calit2.uci.edu.
+      </h5>
+  </div>
+</div>
+
+<div id="alerts" style="width: 600px; margin: 0 auto;">
+  <div id="alert-incorrect" class="alert alert-danger fade in" style="display: none;">
+    <strong>Uh oh!</strong> It seems like you didn't agree to the disclaimer. If you do not want to continue with this study, please close this tab and return or abandon the HIT.
+  </div>
+</div>
+
+<div class="text-center">
+  <h5><input id="disclaimer-agree" type="checkbox">I have read the disclaimer and agree to participate in this study.</h5><br>
+  <button class="btn btn-primary btn-lg" type="submit" value="submit" onclick="redirectPrescreen()">CONTINUE</button>
+</div>
+
+</div>
+
+<br><br><br>
+{% endblock %}
