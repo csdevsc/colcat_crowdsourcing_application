@@ -6,16 +6,6 @@ Each new type of task corresponds to a task model
 from django.db import models
 from data import Data_FullGrid_Confidence, Data_FullGrid
 
-# Practice Tasks
-class Task_Practice_Foci_01(models.Model):
-    class Meta:
-        db_table = 'tbl_response_practice_foci'
-    def __unicode__(self):
-        return 'Foci Practice Task'
-    task_response_id = models.AutoField(primary_key = True, unique=True)
-    worker_id = models.CharField(max_length=128)
-
-
 # Tasks
 class Task_Naming_001(Data_FullGrid_Confidence):
     class Meta:
