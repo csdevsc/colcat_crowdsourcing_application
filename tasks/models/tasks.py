@@ -24,6 +24,7 @@ class Task_Foci_001(Data_FullGrid):
     task_response_id = models.AutoField(primary_key=True, unique=True)
     worker_id = models.CharField(max_length=128)
     task_response_key = models.CharField(max_length=32, unique=True)
+    dt_completed = models.DateTimeField(auto_now=True)
 
 class Task_Mapping_001(Data_FullGrid):
     class Meta:
