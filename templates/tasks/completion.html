@@ -3,7 +3,7 @@
 {% block title %}Task Complete{% endblock %}
 
 {% block main %}
-<div class="jumbotron text-center" style="padding: 10px;">
+<div class="jumbotron text-center" style="padding: 10px; width: 50%;">
   <h3>You have completed this task!</h3>
   <h4>Thank you for participating in this study.</h4>
   <p>
@@ -22,11 +22,13 @@
       If you have any comments about this HIT, please enter them below:
   </h4>
 
-  <textarea class="form-control" name="comments" id="comments" rows="4" cols="100"></textarea>
-  <br>
-  <button class="btn btn-default btn-lg">SEND COMMENTS</button>
-  <br>
-  <h4></h4>
+  <div style="width: 500px; margin: 0 auto;">
+    <textarea class="form-control" name="comments" id="comments" rows="4" cols="100"></textarea>
+    <br>
+    <button class="btn btn-default btn-lg">SEND COMMENTS</button>
+    <br>
+  </div>
+  
   <p>
     If you have any questions, concerns, or comments, please <a href="mailto:">send us an e-mail</a>.
   </p>
