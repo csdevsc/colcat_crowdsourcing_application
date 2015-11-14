@@ -11,7 +11,8 @@ function getURLParameter(name) {
 
 function redirectTask() {
   var mtwid = getURLParameter('mtwid');
-  window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/foci/001?mtwid=" + mtwid);
+  var tiid = getURLParameter('tiid');
+  window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/foci/" + tiid + "?mtwid=" + mtwid);
 }
 
 correct = 0;
@@ -20,7 +21,7 @@ function checkVal(num){
   question = 'practice_' + num;
   var answer = document.getElementById(question).value;
   if (question == 'practice_03') {
-    if (answer == 'Hw') {
+    if (answer == 'Sh') {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = '<p>You are correct!</p>';
       correct++;
@@ -29,7 +30,7 @@ function checkVal(num){
       document.getElementById(result).innerHTML = '<p>You are incorrect. Please try again.</p>';
     }
   } else if (question == 'practice_08') {
-    if (answer == 'Ck') {
+    if (answer == 'Ma') {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = '<p>You are correct!</p>';
       correct++;
@@ -38,24 +39,42 @@ function checkVal(num){
       document.getElementById(result).innerHTML = '<p>You are incorrect. Please try again.</p>';
     }
   } else if (question == 'practice_11') {
-    if (answer == 'Hl' || answer == 'HI') {
+    if (answer == 'Ki') {
       result = 'result_' + num;
-      document.getElementById(result).innerHTML = 'You are correct! However, please be aware that this value may have been HI or HL.';
+      document.getElementById(result).innerHTML = 'You are correct! Pay attention to values that may appear in rows A and J that have no cell divisions.';
       correct = 2;
     } else {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = 'You are incorrect. Please try again. (Stuck? View the answer <span onclick="showAnswer(11)" style="color: red;">here</span>)';
     }
   } else if (question == 'practice_12') {
-    if (answer == 'Pink-') {
+    if (answer == 'Pt2') {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = 'You are correct! Good job not forgetting the hyphen. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces.';
-      correct = 2;
+      correct = 3;
     } else {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = 'You are incorrect. Please try again. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces. (Stuck? View the answer <span onclick="showAnswer(12)" style="color: red;">here</span>)';
     }
-  } else {
+  } else if (question == 'practice_14') {
+    if (answer == 'Mum- Khi-') {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = 'You are correct! Good job not forgetting the hyphens. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces.';
+      correct = 5;
+    } else {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = 'You are incorrect. Please try again. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces. (Stuck? View the answer <span onclick="showAnswer(14)" style="color: red;">here</span>)';
+    }
+  }  else if (question == 'practice_13') {
+    if (answer == 'Cc Cp') {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = 'You are correct! Remember, when there are multiple values in a box, separate them by a space.';
+      correct = 4;
+    } else {
+      result = 'result_' + num;
+      document.getElementById(result).innerHTML = 'You are incorrect. Remember, when there are multiple values in a box, separate them by a space. (Stuck? View the answer <span onclick="showAnswer(13)" style="color: red;">here</span>)';
+    }
+  }  else {
     if (answer == '') {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = '<p>You are correct!</p>';
@@ -84,20 +103,37 @@ function checkAnswers(panel) {
   } else if (panel == 3) {
     $("#answer_12").hide();
     checkVal("12");
+  } else if (panel == 4) {
+    $("#answer_13").hide();
+    checkVal("13");
+  } else if (panel == 5) {
+    $("#answer_14").hide();
+    checkVal("14");
   }
 }
 
 function proceed(num){
   if (correct == 2) {
-    if (num == '12') {
-      $("#continueTask").show();
-    } else if (num > 10) {
+    if (num > 10) {
       $("#continue2").show();
+      document.getElementById("check_02").className = "btn disabled";
       correct = 0;
     } else {
       $("#continue1").show();
+      document.getElementById("check_01").className = "btn disabled";
       correct = 0;
     }
+  } else if (correct == 3) {
+    $("#continue3").show();
+    document.getElementById("check_03").className = "btn disabled";
+    correct = 0
+  } else if (correct == 4) {
+    $("#continue4").show();
+    document.getElementById("check_04").className = "btn disabled";
+    correct = 0
+  } else if (correct == 5) {
+    $("#continueTask").show();
+    document.getElementById("check_05").className = "btn disabled";
   }
 }
 
@@ -108,6 +144,12 @@ function nextPanel(num) {
   } else if (num == 3) {
     $("#panel_2").hide();
     $("#panel_3").show();
+  } else if (num == 4) {
+    $("#panel_3").hide();
+    $("#panel_4").show();
+  } else if (num ==5) {
+    $("#panel_4").hide();
+    $("#panel_5").show();
   }
 }
 
@@ -116,6 +158,10 @@ function showAnswer(num) {
     $("#answer_11").show();
   } else if (num == 12) {
     $("#answer_12").show();
+  } else if (num == 13) {
+    $("#answer_13").show();
+  } else if (num == 14) {
+    $("#answer_14").show();
   }
 }
 </script>
@@ -138,7 +184,7 @@ function showAnswer(num) {
       </h5>
       <h5>
         <br>
-        If you have any concerns or questions about the task, please contact colcatcrowdsource@calit2.uci.edu.
+        If you have any concerns or questions about the task, please contact kjameson@uci.edu.
       </h5>
   </div>
 </div>
@@ -213,7 +259,7 @@ function showAnswer(num) {
       </table>
       <br>
       <div class="text-center" style="padding-bottom: 20px;">
-              <button class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(1);">Check Answers</button>
+        <button id="check_01" class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(1);">Check Answers</button>
       </div>
 
       <div id="continue1" class="text-center" style="display: none;">
@@ -222,14 +268,14 @@ function showAnswer(num) {
     </div>
 
     <div id="panel_2" class="col-md-5 well" style="display: none;">
-      <h4>Enter the value of box D7 below</h4>
+      <h4>Enter the value of box A7 below</h4>
       <input id="practice_11" type="text"/>
       <p id="result_11"></p>
-      <p id="answer_11" style="display: none;">The answer is Hi or Hl.</p>
+      <p id="answer_11" style="display: none;">The answer is Ki.</p>
 
       <br>
       <div class="text-center" style="padding-bottom: 20px;">
-        <button class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(2);">Check Answers</button>
+        <button id="check_02" class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(2);">Check Answers</button>
       </div>
       <br>
       <div id="continue2" class="text-center" style="display: none;">
@@ -238,14 +284,46 @@ function showAnswer(num) {
     </div>
 
     <div id="panel_3" class="col-md-5 well" style="display: none;">
-      <h4>Enter the value of box H10 below</h4>
+      <h4>Enter the value of box H3 below</h4>
       <input id="practice_12" type="text"/>
       <p id="result_12"></p>
-      <p id="answer_12" style="display: none;">The answer is Pink-.</p>
+      <p id="answer_12" style="display: none;">The answer is Pt2.</p>
 
       <br>
       <div class="text-center" style="padding-bottom: 20px;">
-        <button class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(3);">Check Answers</button>
+        <button id="check_03" class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(3);">Check Answers</button>
+      </div>
+      <br>
+      <div id="continue3" class="text-center" style="display: none;">
+        <button class="btn btn-primary" type="submit" value="submit" onclick="nextPanel(4);">Continue</button>
+      </div>
+    </div>
+
+    <div id="panel_4" class="col-md-5 well" style="display: none;">
+      <h4>Enter the value of box E7 below</h4>
+      <input id="practice_13" type="text"/>
+      <p id="result_13"></p>
+      <p id="answer_13" style="display: none;">The answer is Cc Cp.</p>
+
+      <br>
+      <div class="text-center" style="padding-bottom: 20px;">
+        <button id="check_04" class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(4);">Check Answers</button>
+      </div>
+      <br>
+      <div id="continue4" class="text-center" style="display: none;">
+        <button class="btn btn-primary" type="submit" value="submit" onclick="nextPanel(5);">Continue</button>
+      </div>
+    </div>
+
+    <div id="panel_5" class="col-md-5 well" style="display: none;">
+      <h4>Enter the value of box B9 below</h4>
+      <input id="practice_14" type="text"/>
+      <p id="result_14"></p>
+      <p id="answer_14" style="display: none;">The answer is Mum- Khi-.</p>
+
+      <br>
+      <div class="text-center" style="padding-bottom: 20px;">
+        <button id="check_05" class="btn btn-primary" type="submit" value="submit" onclick="checkAnswers(5);">Check Answers</button>
       </div>
       <div id="continueTask" class="text-center" style="display: none;">
         <button class="btn btn-primary btn-lg" type="submit" value="submit" onclick="redirectTask()">Go To Task</button>
