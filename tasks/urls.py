@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^foci/001', views.get_form_list, {'task' : 'foci-001'}),
     url(r'^foci/002', views.get_form_list, {'task' : 'foci-002'}),
     url(r'^foci/003', views.get_form_list, {'task' : 'foci-003'}),
+    url(r'^foci/004', views.get_form_list, {'task' : 'foci-004'}),
     url(r'^practice-foci', views.practice_foci, {}),
     url(r'^naming/001', views.get_form_list, {'task': 'naming'}),
     url(r'^mapping/001', views.get_form_list, {'task' : 'mapping'}),

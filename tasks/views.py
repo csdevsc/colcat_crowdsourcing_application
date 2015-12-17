@@ -20,6 +20,8 @@ def get_form_list(request, task):
         return Foci_002_Wizard.as_view(sorted(Form_Task_Foci_001, key=lambda r:random.random()))(request)
     elif task == 'foci-003':
         return Foci_003_Wizard.as_view(sorted(Form_Task_Foci_001, key=lambda r:random.random()))(request)
+    elif task == 'foci-004':
+        return Foci_004_Wizard.as_view(sorted(Form_Task_Foci_001, key=lambda r:random.random()))(request)
     elif task == 'naming':
         return Naming_001_Wizard.as_view(sorted(Form_Task_Naming_001, key=lambda r:random.random()))(request)
     elif task == 'mapping':
@@ -74,6 +76,7 @@ class Foci_001_Wizard(SessionWizardView):
         instance = Task_Foci_001()
         setattr(instance, 'task_response_key', key)
         setattr(instance, 'worker_id', self.w_id)
+        setattr(instance, 'task_img_id', '001')
         for form in form_list:
             for field, value in form.cleaned_data.iteritems():
                 setattr(instance, field, value)
@@ -93,6 +96,7 @@ class Foci_002_Wizard(SessionWizardView):
         instance = Task_Foci_001()
         setattr(instance, 'task_response_key', key)
         setattr(instance, 'worker_id', self.w_id)
+        setattr(instance, 'task_img_id', '002')
         for form in form_list:
             for field, value in form.cleaned_data.iteritems():
                 setattr(instance, field, value)
@@ -112,6 +116,28 @@ class Foci_003_Wizard(SessionWizardView):
         instance = Task_Foci_001()
         setattr(instance, 'task_response_key', key)
         setattr(instance, 'worker_id', self.w_id)
+        setattr(instance, 'task_img_id', '003')
+        for form in form_list:
+            for field, value in form.cleaned_data.iteritems():
+                setattr(instance, field, value)
+        instance.save()
+        # save with key
+        return render_to_response('tasks/completion.html', {'key': key})
+
+class Foci_004_Wizard(SessionWizardView):
+    template_name = 'tasks/foci-004.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.w_id = request.GET.get('mtwid')
+        self.ti_id = request.GET.get('tiid')
+        return super(Foci_004_Wizard, self).dispatch(request, *args, **kwargs)
+
+    def done(self, form_list, **kwargs):
+        key = generate_key()
+        instance = Task_Foci_001()
+        setattr(instance, 'task_response_key', key)
+        setattr(instance, 'worker_id', self.w_id)
+        setattr(instance, 'task_img_id', '004')
         for form in form_list:
             for field, value in form.cleaned_data.iteritems():
                 setattr(instance, field, value)

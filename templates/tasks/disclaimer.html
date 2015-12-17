@@ -17,8 +17,11 @@ function getURLParameter(name) {
 }
 
 function redirectPrescreen() {
-  var agree = document.getElementById("disclaimer-agree").checked;
-  if (agree) {
+  var agree1 = document.getElementById("disclaimer-agree-1").checked;
+  var agree2 = document.getElementById("disclaimer-agree-1").checked;
+  var agree3 = document.getElementById("disclaimer-agree-1").checked;
+  var agree4 = document.getElementById("disclaimer-agree-1").checked;
+  if (agree1 && agree2 && agree3 && agree4) {
     var mtwid = getURLParameter('mtwid');
     var tiid = getURLParameter('tiid');
     window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/prescreen?mtwid=" + mtwid + "&tiid=" + tiid);
@@ -32,7 +35,7 @@ function redirectPrescreen() {
 <div class="row" style="margin-bottom: 50px;">
   <div class="col-md-8 col-md-offset-2">
     <hr>
-    <h4 class="text-center">Disclaimer</h4>
+    <h4 class="text-center">Study Information Sheet</h4>
     <hr>
 
     <div class="text-center">
@@ -64,22 +67,22 @@ function redirectPrescreen() {
     </div>
 
     <ul id="disclaimer-text">
-      <li>You are being asked to participate in a research study using Amazon Mechanical Turk. Participation in this study is completely voluntary. Please read the information below and ask questions about anything that you do not understand before deciding if you want to participate. A researcher listed above will be available to answer your questions. The purpose of this research study is to collect data to be used as the basis for modeling human judgements the transcription of hand-written text into a computer addressable data. This research will increase our understanding of how humans recognize and cognitively process hand written text and make quick judgements in situations where more than one interpretation may be possible.</li>
-      <li>You are eligible to participate in this study if you are: 1) at least 18 years of age or older, and 2) you are native English speaker. Individuals who are sufficiently familiar with English to evaluate and recognize English alpha-characters may not participate.</li>
-      <li>The research involves the following procedures: For each stimulus you will either be asked to provide the characters that you can discern in the pages and to type the alpha-character string on a keyboard or provide it by using a computer pointer or mouse. The test period will last one hour including rest periods you can proceed are your own rate and take at any amount of time, however we request you complete the task in one sitting, minimizing time away from the computer. These procedures will all take place at a place of your choosing.</li>
+      <li>You are being asked to participate in a research study using Amazon Mechanical Turk. Participation in this study is completely voluntary. Please read the information below and ask questions about anything that you do not understand before deciding if you want to participate. A researcher listed above will be available to answer your questions. The purpose of this research study is to collect data to be used as the basis for modeling human judgements and the transcription of hand-written text into a computer addressable data. This research will increase our understanding of how humans recognize and cognitively process hand written text and make quick judgements in situations where more than one interpretation may be possible.</li>
+      <li>You are eligible to participate in this study if you are: 1) at least 18 years of age or older, and 2) you are native English speaker. Individuals who are not sufficiently familiar with English to evaluate and recognize English alpha-characters may not participate.</li>
+      <li>The research involves the following procedures: For each stimulus you will either be asked to provide the characters that you can discern in the pages and to type the alpha-character string on a keyboard or provide it by using a computer pointer or mouse. The test period will last one hour including rest periods. You can proceed are your own rate and take at any amount of time, however we request you complete the task in one sitting, minimizing time away from the computer. These procedures will all take place at a pace of your choosing.</li>
       <li>This study involves no known risks. There are no known harms of discomforts associated with this study beyond those encountered in normal daily life.</li>
       <li>There are no direct benefits to you from participation in the study. However, your participation in this project will benefit the scientific community by providing valuable data for the study of important theoretical issues related to how humans process and reproduce hand written text.</li>
       <li>Participation in this study is voluntary. There is no cost to you for participating. You may refuse to participate or discontinue your involvement at any time without penalty. You may choose to skip a question or a study procedure.</li>
       <li>You will be paid at nominal rate of $1.50 for sixty minutes of participation.</li>
       <li>Please note that the data you provide may be collected and used by Amazon as per its privacy agreement. This study contains a number of checks to make sure that participants are finishing the task honestly and completely. As long as you read the instructions and complete the tasks, your HIT will be approved. If you fail these checks, your HIT will be rejected. Additionally, this research is for residents of the United States over the age of 18; if you are not a resident of the United States and/or under the age of 18, please do not complete this survey.</li>
-      <li>All research data collected will be stored securely and confidentially. All identifiable information that will be collected about you will be removed and replaced with a code. For short-term purposes, a list linking the code and your identifiable information will be kept separate from the research data. Long-term storage of the data will be done without personal identifier. All collected data will be kept in an offline file in a password protected computer, and destroyed at the end of the project (or after a period of 3 years).</li>
+      <li>All research data collected will be stored securely and confidentially. All identifiable information that will be collected about you will be removed and replaced with a code. For short-term purposes, a list linking the code and your identifiable information will be kept separate from the research data. Long-term storage of the data will be done without personal identifiers. All collected data will be kept in an offline file in a password protected computer, and destroyed at the end of the project (or after a period of 3 years).</li>
       <li>The research team, authorized UCI personnel and the study sponsor may have access to your study records to protect your safety and welfare. Any information derived from this research project that personally identifies you will not be voluntarily released or disclosed by these entities without your separate consent, except as specifically required by law.</li>
       <li>If you have any comments, concerns, or questions regarding the conduct of this research please contact the researchers listed at the top of this form.</li>
       <li>If you are unable to reach the researchers listed at the top of the form and have general questions, or you have concerns or complaints about the research, or questions about your rights as a research subject, please contact UCI's Office of Research Administration by phone, (949) 824-6662, by e-mail at <a href="mailto:IRB@rgs.uci.edu">IRB@rgs.uci.edu</a> or at University Tower - 4199 Campus Drive, Suite 300, Irvine, CA 92697-7600.</li>
       <li>If you agree and would like to participate in the study, please go to the next page.</li>
     </ul>
 
-    <p>UCI IRB Registered: 10-21-2015 | APP # 9047 | HS# 2015-1976</p>
+    <p>UCI IRB Registered: 10-21-2015 | HS# 2015-1976</p>
   </div>
 </div>
 
@@ -89,8 +92,12 @@ function redirectPrescreen() {
   </div>
 </div>
 
-<div class="text-center">
-  <h5><input id="disclaimer-agree" type="checkbox"> I have read the disclaimer and agree to participate in this study.</h5><br>
+<div style="width: 600px; margin: 0 auto;">
+  <h5><input id="disclaimer-agree-2" type="checkbox"> I am over 18 years of age.</h5><br>
+  <h5><input id="disclaimer-agree-3" type="checkbox"> I am a citizen of the United States.</h5><br>
+  <h5><input id="disclaimer-agree-4" type="checkbox"> I am a native english speaker.</h5><br>
+  <h5><input id="disclaimer-agree-1" type="checkbox"> I have read the <strong><a href="{% static 'irb/IRB2.pdf' %}" target="_blank">Study Information Sheet</a></strong> (also displayed above).</h5><br>
+  <h5>By clicking continue, you are agreeing to participate in this study.</h5><br>
   <button class="btn btn-primary btn-lg" type="submit" value="submit" onclick="redirectPrescreen()">CONTINUE</button>
 </div>
 

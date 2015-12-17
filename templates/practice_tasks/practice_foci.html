@@ -19,9 +19,9 @@ correct = 0;
 
 function checkVal(num){
   question = 'practice_' + num;
-  var answer = document.getElementById(question).value;
+  var answer = document.getElementById(question).value.toLowerCase(); // Disregard capitalization
   if (question == 'practice_03') {
-    if (answer == 'Sh') {
+    if (answer == 'sh') {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = '<p>You are correct!</p>';
       correct++;
@@ -30,7 +30,7 @@ function checkVal(num){
       document.getElementById(result).innerHTML = '<p>You are incorrect. Please try again.</p>';
     }
   } else if (question == 'practice_08') {
-    if (answer == 'Ma') {
+    if (answer == 'ma') {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = '<p>You are correct!</p>';
       correct++;
@@ -39,7 +39,7 @@ function checkVal(num){
       document.getElementById(result).innerHTML = '<p>You are incorrect. Please try again.</p>';
     }
   } else if (question == 'practice_11') {
-    if (answer == 'Ki') {
+    if (answer == 'ki') {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = 'You are correct! Pay attention to values that may appear in rows A and J that have no cell divisions.';
       correct = 2;
@@ -48,16 +48,16 @@ function checkVal(num){
       document.getElementById(result).innerHTML = 'You are incorrect. Please try again. (Stuck? View the answer <span onclick="showAnswer(11)" style="color: red;">here</span>)';
     }
   } else if (question == 'practice_12') {
-    if (answer == 'Pt2') {
+    if (answer == 'pt2') {
       result = 'result_' + num;
-      document.getElementById(result).innerHTML = 'You are correct! Good job not forgetting the hyphen. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces.';
+      document.getElementById(result).innerHTML = 'You are correct! Make sure to also include any numbers that are superscripts or subscripts by simply typing it after the characters.';
       correct = 3;
     } else {
       result = 'result_' + num;
-      document.getElementById(result).innerHTML = 'You are incorrect. Please try again. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces. (Stuck? View the answer <span onclick="showAnswer(12)" style="color: red;">here</span>)';
+      document.getElementById(result).innerHTML = 'You are incorrect. Please try again. Do not forget to include any superscripts or subscripts by simply typing the number after the characters. (Stuck? View the answer <span onclick="showAnswer(12)" style="color: red;">here</span>)';
     }
   } else if (question == 'practice_14') {
-    if (answer == 'Mum- Khi-') {
+    if (answer == 'mum- khi-') {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = 'You are correct! Good job not forgetting the hyphens. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces.';
       correct = 5;
@@ -66,7 +66,7 @@ function checkVal(num){
       document.getElementById(result).innerHTML = 'You are incorrect. Please try again. Remember, enter everything EXACTLY as it appears in the box, including dashes and spaces. (Stuck? View the answer <span onclick="showAnswer(14)" style="color: red;">here</span>)';
     }
   }  else if (question == 'practice_13') {
-    if (answer == 'Cc Cp') {
+    if (answer == 'cc cp') {
       result = 'result_' + num;
       document.getElementById(result).innerHTML = 'You are correct! Remember, when there are multiple values in a box, separate them by a space.';
       correct = 4;

@@ -23,11 +23,12 @@ Tips:
 {% block main %}
 <script>
 function checkAnswers() {
-  var answer_01 = document.getElementById("question_01").value;
-  var answer_02 = document.getElementById("id_0-confidence_a0_0").checked;
-  var answer_04 = document.getElementById("question_04").value;
+  var answer_01 = document.getElementById("question_01").value.toLowerCase();
+  //var answer_02 = document.getElementById("id_0-confidence_a0_0").checked;
+  var answer_04 = document.getElementById("question_04").value.toLowerCase();
 
-  if ((answer_01 == 'Km') && (answer_02) && (answer_04 == 'Pink-')) {
+  // if ((answer_01 == 'Km') && (answer_02) && (answer_04 == 'Pink-')) {
+  if ((answer_01 == 'km') && (answer_04 == 'pink-')) {
     $('#alert-incorrect').hide();
     $('#alert-correct').show();
   } else {
@@ -76,7 +77,7 @@ function redirectPractice() {
         First, we'll do a prescreening task.
       </h5>
       <h5 class="text-danger">
-        Answer the following questions carefully and correctly. Your ability to do our task depends on you correctly answering all of the questions below. If you answer any questions incorrectly, you will be unable to continue with our task. There are 3 questions total. For questions that ask you to identify the characters in an image, make sure you enter everything EXACTLY as it appears (this includes capitalizations and hyphens [-])!
+        Answer the following questions carefully and correctly. Your ability to do our task depends on you correctly answering all of the questions below. If you answer any questions incorrectly, you will be unable to continue with our task. For questions that ask you to identify the characters in an image, make sure you enter everything EXACTLY as it appears (this includes capitalizations and hyphens [-])!
       </h5>
       <h5>
         You can attempt these prescreen tasks as many times as you would like. You will not be able to proceed to the actual task until you correctly answer all questions. If you are unable to continue with this HIT, please return the HIT or let it expire. Abandoned and returned HITs will not negatively affect your reputation on Mechanical Turk. We are not able to access these statistics, as they are not provided to Requesters.
@@ -98,7 +99,7 @@ function redirectPractice() {
     </h5>
   </div>
 
-  <div class="text-center question">
+  <!-- <div class="text-center question">
     <h4>How sure are you?</h4>
     <p>Please select "1 (Not Sure)" as the answer to this question.</p>
     <h5>
@@ -112,7 +113,7 @@ function redirectPractice() {
       <label for="id_0-confidence_a0_7"><input id="id_0-confidence_a0_7" name="question_02" type="radio" value="8"> 8</label>
       <label for="id_0-confidence_a0_8"><input id="id_0-confidence_a0_8" name="question_02" type="radio" value="9"> 9 (Very Sure)</label>
     </h5>
-  </div>
+  </div> -->
 
   <div class="container text-center question">
     <div class="row">
