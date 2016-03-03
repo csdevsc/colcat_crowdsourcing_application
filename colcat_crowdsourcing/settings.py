@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'formtools',
     'tasks',
     'homepage',
+    'manage',
 )
 
 MIDDLEWARE_CLASSES = (

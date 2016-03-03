@@ -1,0 +1,26 @@
+{% extends 'manage-base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block nav_home %}active{% endblock %}
+
+{% block main %}
+<div class="col-md-6 col-offset-3">
+  <h3>Languages</h3>
+    {% if languages %}
+      <table class="table table-striped">
+        <tr>
+          <th>language_id</th>
+          <th>language_name</th>
+        </tr>
+        {% for language in languages %}
+        <tr>
+          <td>{{language.language_id}}</td>
+          <td>{{ language.language_name }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+        <strong>There are no languages present.</strong>
+    {% endif %}
+</div>
+{% endblock %}

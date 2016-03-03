@@ -13,3 +13,8 @@ from django.contrib import admin
 #     pass
 #
 # admin.site.register(Task_Foci_001, Task_Foci_001_Admin)
+
+from tasks.models import Document, Task_Foci_001
+
+admin.site.register(Document)
+admin.site.register(Task_Foci_001)

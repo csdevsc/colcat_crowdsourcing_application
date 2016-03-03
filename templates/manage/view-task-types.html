@@ -1,0 +1,22 @@
+{% extends 'manage-base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block nav_home %}active{% endblock %}
+
+{% block main %}
+<div class="col-md-6 col-offset-3">
+  <h3>Task Types</h3>
+    {% if task_types %}
+        <ul>
+          {% for type in task_types %}
+          <li>
+            {{type.task_type_name}}
+          </li>
+          {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no task types present.</strong>
+    {% endif %}
+    </table>
+</div>
+{% endblock %}

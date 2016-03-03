@@ -1,0 +1,21 @@
+{% extends 'manage-base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block nav_home %}active{% endblock %}
+
+{% block main %}
+<div class="col-md-6 col-offset-3">
+  <h3>Tasks</h3>
+    <table class="table table-striped">
+    {% if tasks %}
+        <tr>
+          {% for task in tasks %}
+          {{task.as_p}}
+          {% endfor %}
+        </tr>
+    {% else %}
+        <strong>There are no tasks present.</strong>
+    {% endif %}
+    </table>
+</div>
+{% endblock %}
