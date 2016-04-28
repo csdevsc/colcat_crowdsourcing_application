@@ -54,6 +54,8 @@ def new_task(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
+            post.task_name = request.POST.get('language_name') + '_' + request.POST.get('task_type_name') + '_' + request.POST.get('image_filepath')
+            post.task_url = '/tasks/'+request.POST.get('language_name')+'/'+request.POST.get('task_type_name') + '/'+request.POST.get('image_filepath')
             post.save()
             return HttpResponseRedirect(reverse('manage.views.view_tasks'))
     else:
@@ -61,9 +63,12 @@ def new_task(request):
     return render(request, 'manage/new-task.html', {'form': form})
 
 def view_tasks(request):
-    task_list = Task.objects.all()
-    context_dict = {'tasks': task_list}
-    return render(request, 'manage/view-tasks.html', context_dict)
+    if request.method == "GET":
+        task_list = Task.objects.all()
+        context_dict = {'tasks': task_list}
+        return render(request, 'manage/view-tasks.html', context_dict)
+    else:
+        return HttpResponseRedirect(reverse('manage.views.view_tasks'))
 
 def new_task_type(request):
     if request.method == "POST":
@@ -82,8 +87,31 @@ def view_task_types(request):
     return render(request, 'manage/view-task-types.html', context_dict)
 
 # RESPONSES
-
 def download_responses(request):
     response_list = Task_Foci_001.objects.all()
     context_dict = {'responses': response_list}
+    dump(response_list, 'uploads/responses/output.csv')
     return render(request, 'manage/download-responses.html', context_dict)
+
+import csv
+from django.db.models.loading import get_model
+
+def dump(qs, outfile_path):
+    model = qs.model
+    writer = csv.writer(open(outfile_path, 'w'))
+
+    headers = []
+    for field in model._meta.fields:
+        headers.append(field.name)
+    writer.writerow(headers)
+
+    for obj in qs:
+        row = []
+        for field in headers:
+            val = getattr(obj, field)
+            if callable(val):
+                val = val()
+            if type(val) == unicode:
+                val = val.encode("utf-8")
+            row.append(val)
+        writer.writerow(row)

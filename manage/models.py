@@ -57,8 +57,9 @@ class Task(models.Model):
         db_table = 'tbl_tasks'
     def __unicode__(self):
         return self.task_name
-    task_id = models.CharField(primary_key=True, max_length=128, unique=True)
+    task_id = models.AutoField(primary_key=True, unique=True)
     task_name = models.CharField(max_length=128)
-    language_id = models.CharField(max_length=128)
+    language_name = models.CharField(max_length=128)
     task_type_name = models.CharField(max_length=128)
     image_filepath = models.CharField(max_length=256)
+    task_url = models.CharField(max_length=256)

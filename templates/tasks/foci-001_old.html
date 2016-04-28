@@ -43,11 +43,9 @@ input[type="text"] {
     <br>
   </div>
   <div class="col-md-7" style="position:relative;">
-    <h1>{{ request.session.language_id }}</h1>
-    <h6>{{ view.img_url }}</h6>
-    <img id="foci_img" class="img-responsive" src="{{ view.img_url }}" data-zoom-image="{{ view.img_url }}"/>
+    <img id="foci_img" class="img-responsive" src="{% static 'data/foci/003.png' %}" data-zoom-image="{% static 'data/foci/003.png' %}"/>
     <br>
-    <a href="{{ view.img_url }}" target="_blank"><h2>Open image in a new tab</h2></a>
+    <a href="http://colcat.calit2.uci.edu:8003/static/data/foci/003.png" target="_blank"><h2>Open image in a new tab</h2></a>
     <br><br>
   </div>
   <div class="col-md-3" style="position:relative; top: 100px;">

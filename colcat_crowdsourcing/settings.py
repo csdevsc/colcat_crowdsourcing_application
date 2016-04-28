@@ -93,7 +93,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-STATIC_PATH = os.path.join(BASE_DIR, 'static_files')
+STATIC_PATH = os.path.join(BASE_DIR, 'static_src')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
@@ -102,9 +102,9 @@ STATICFILES_DIRS = (
     STATIC_PATH,
 )
 
-# Media Files (User Uploads)
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# Media files (User Uploads)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/uploads/'
 
 # User Registration
 REGISTRATION_OPEN = True                # If True, users can register

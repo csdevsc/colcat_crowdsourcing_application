@@ -7,10 +7,23 @@
 <div class="col-md-6 col-offset-3">
   <h3>Tasks</h3>
     <table class="table table-striped">
-    {% if tasks %}
+      {% if tasks %}
+      <tr>
+        <th>
+          Task name
+        </th>
+        <th>
+          Add to batch
+        </th>
+      </tr>
         <tr>
           {% for task in tasks %}
-          {{task.as_p}}
+          <td>
+            {{ task.task_name }}
+          </td>
+          <td>
+
+          </td>
           {% endfor %}
         </tr>
     {% else %}

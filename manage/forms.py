@@ -26,7 +26,7 @@ class TaskTypeForm(ModelForm):
 class TaskForm(ModelForm):
     class Meta:
         model = Task
-        fields = ('task_name', 'language_name', 'task_type_name', 'image_filepath')
+        fields = ('language_name', 'task_type_name', 'image_filepath')
     language_name = forms.ModelChoiceField(queryset=Language.objects.all().order_by('language_name'))
     task_type_name = forms.ModelChoiceField(queryset=Task_Type.objects.all().order_by('task_type_name'))
     image_filepath = forms.ModelChoiceField(queryset=Image_Data.objects.all().order_by('image_id'))

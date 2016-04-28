@@ -18,6 +18,5 @@ urlpatterns = [
     url(r'^practice-foci', views.practice_foci, {}),
     url(r'^naming/001', views.get_form_list, {'task': 'naming'}),
     url(r'^mapping/001', views.get_form_list, {'task' : 'mapping'}),
-    #url(r'^(?P<language>\w+)/(?P<task_type>\w+)/(?P<img_id>\w+)$', views.get_task),
-    url(r'^list/$', views.list, name='list'),
+    url(r'^(?P<language_id>\d+)/(?P<task_type_id>\d+)/(?P<img_id>\d+)$', views.get_task),
 ]
