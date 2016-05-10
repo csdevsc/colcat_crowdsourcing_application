@@ -8,6 +8,10 @@ from manage.forms import *
 from manage.models import *
 from tasks.models import *
 
+import os
+import csv
+from django.http import HttpResponse
+
 # Views
 def index(request):
     return render(request, 'manage/index.html', {})
@@ -35,7 +39,8 @@ def new_image(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
-            newimg = Image_Data(image_filepath = request.FILES['image_filepath'], language_name = request.POST.get('language_name'), task_type_name = request.POST.get('task_type_name'))
+            image_name = os.path.splitext(request.FILES['image_filepath'].name)[0]
+            newimg = Image_Data(image_filepath = request.FILES['image_filepath'], image_id = image_name, language_name = request.POST.get('language_name'), task_type_name = request.POST.get('task_type_name'))
             newimg.save()
             # Redirect to the document list after POST
             return HttpResponseRedirect(reverse('manage.views.view_images'))
@@ -48,14 +53,34 @@ def view_images(request):
     context_dict = {'images': image_list}
     return render(request, 'manage/view-images.html', context_dict)
 
+# DATA MODELS
+def new_data_model(request):
+    if request.method == "POST":
+        form = DataModelForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return HttpResponseRedirect(reverse('manage.views.view_data_models'))
+    else:
+        form = DataModelForm()
+    return render(request, 'manage/new-data-model.html', {'form': form})
+
+def view_data_models(request):
+    model_list = Data_Model.objects.all()
+    context_dict = {'models': model_list}
+    return render(request, 'manage/view-data-models.html', context_dict)
+
 # TASKS
 def new_task(request):
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.task_name = request.POST.get('language_name') + '_' + request.POST.get('task_type_name') + '_' + request.POST.get('image_filepath')
-            post.task_url = '/tasks/'+request.POST.get('language_name')+'/'+request.POST.get('task_type_name') + '/'+request.POST.get('image_filepath')
+            post.language_id = request.POST.get('language_id')
+            post.task_type_id = request.POST.get('task_type_id')
+            post.image_id = request.POST.get('image_id')
+            post.task_name = request.POST.get('language_id') + '_' + request.POST.get('task_type_id') + '_' + request.POST.get('image_id')
+            post.task_url = '/tasks/'+request.POST.get('language_id')+'/'+request.POST.get('task_type_id') + '/'+request.POST.get('image_id')
             post.save()
             return HttpResponseRedirect(reverse('manage.views.view_tasks'))
     else:
@@ -63,12 +88,35 @@ def new_task(request):
     return render(request, 'manage/new-task.html', {'form': form})
 
 def view_tasks(request):
-    if request.method == "GET":
-        task_list = Task.objects.all()
-        context_dict = {'tasks': task_list}
-        return render(request, 'manage/view-tasks.html', context_dict)
-    else:
-        return HttpResponseRedirect(reverse('manage.views.view_tasks'))
+    if request.method == "POST":
+        if 'create_batch_file' in request.POST:
+            print "Creating batch file..."
+            task_choices = request.POST.getlist('task_choices')
+
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="batch.csv"'
+            writer = csv.writer(response)
+
+            headers = ['task_language_id', 'task_type_id', 'task_img_id']
+            writer.writerow(headers)
+            for tid in task_choices:
+                task = Task.objects.get(task_id=tid)
+                task_info = [task.language_id, task.task_type_id, task.image_id]
+                writer.writerow(task_info)
+            print 'Finished writing batch file'
+
+            return response
+        elif 'mark_tasks_complete' in request.POST:
+            print "Marking tasks complete..."
+            tasks_complete = request.POST.getlist('tasks_complete')
+            print tasks_complete
+            for tid in tasks_complete:
+                task = Task.objects.get(task_id=tid)
+                task.complete = True
+                task.save()
+    task_list = Task.objects.all()
+    context_dict = {'tasks': task_list}
+    return render(request, 'manage/view-tasks.html', context_dict)
 
 def new_task_type(request):
     if request.method == "POST":
@@ -85,6 +133,22 @@ def view_task_types(request):
     task_type_list = Task_Type.objects.all()
     context_dict = {'task_types': task_type_list}
     return render(request, 'manage/view-task-types.html', context_dict)
+
+def new_task_template(request):
+    if request.method == "POST":
+        form = TaskTemplateForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return HttpResponseRedirect(reverse('manage.views.view_task_templates'))
+    else:
+        form = TaskTemplateForm()
+    return render(request, 'manage/new-task-template.html', {'form': form})
+
+def view_task_templates(request):
+    template_list = Task_Template.objects.all()
+    context_dict = {'templates': template_list}
+    return render(request, 'manage/view-task-templates.html', context_dict)
 
 # RESPONSES
 def download_responses(request):

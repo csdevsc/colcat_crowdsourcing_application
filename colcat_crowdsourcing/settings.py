@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'registration',
     'formtools',
     'tasks',
-    'homepage',
+    'home',
     'manage',
 )
 

@@ -1,0 +1,116 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" /><script>
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+
+</script>
+<section class="container" id="SurveyLink" style="margin-bottom:15px; padding: 10px 10px; color:#333333;margin-top: 50px;">
+<div class="row col-xs-12 col-md-12">
+<div class="panel panel-danger"><!-- Start Instructions -->
+<div class="panel-heading"><strong>NOTICE</strong></div>
+
+<div class="panel-body">
+<h4>Please be aware that in order to participate in this task, you must be:</h4>
+&nbsp;
+
+<ul>
+	<li>At least 18 years of age</li>
+	<li>A citizen of the United States</li>
+	<li>A native english speaker</li>
+</ul>
+If you do not meet these requirements, <strong style="color: red;">please do not accept this task</strong>.</div>
+</div>
+
+<div class="panel panel-primary"><!-- Start Instructions -->
+<div class="panel-heading"><strong>Instructions</strong></div>
+
+<div class="panel-body">
+<p>Our research group is building an online archive for valuable cross-cultural behavioral data, and we need your help digitizing the handwritten data sheets. Click the link below to participate in the survey. At the end of the survey, you will receive a completion code to paste into the box below to receive credit for taking our survey.</p>
+
+<p><strong>Make sure to leave this window open as you complete the task. </strong>When you are finished, you will return to this page to paste the completion code in the box below.</p>
+
+<p>An example of this task and a research disclaimer are included below. You will need to accept this HIT before accessing the link to the task on our external website.</p>
+</div>
+</div>
+<!-- End Instructions -->
+
+<table>
+	<tbody>
+		<tr>
+			<td><strong>Link to task:</strong></td>
+			<td>
+			<div id="taskLink">URL not shown because there is an error with JavaScript on your computer. To perform this HIT, you must have JavaScript and cookies enabled on your browser.</div>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>Enter the completion code here:</strong></td>
+			<td style="vertical-align: middle;"><input class="form-control" id="completion_code" name="completion_code" placeholder="e.g. 123456" type="text" /></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td style="color:red;"><strong>WHEN YOU ARE DONE, SCROLL TO THE BOTTOM OF THE HIT AND PRESS SUBMIT.</strong></td>
+		</tr>
+	</tbody>
+</table>
+&nbsp;
+
+<hr />
+<h2>Sample of task:</h2>
+<img class="img-responsive" src="http://colcat.calit2.uci.edu:8003/static/Instructions.png" style="border: 3px solid black;" />
+<hr />
+<h3>Research Disclaimer:</h3>
+&nbsp;
+
+<p>Dear Study Participant:</p>
+
+<p>We are planning to develop automated programs for recognizing human hand-writing for the purposes of transcribing a large corpus of ethnolinguistic data. To develop these programs, we need to first obtain some feedback from individuals on the kinds of tasks that might be successful in developing these automated programs.</p>
+
+<p>Our goal is to provide efficient and error-free systems for converting data in hand-written form to data-addressable format that scientists can use for better understanding the content areas studies, such as the aggregation of groups of individual responses and the individual representation of concepts in language.</p>
+
+<p>We are asking for 60 minutes of your time to complete this online study.</p>
+
+<p>You may participate in the study more than once but you can only participate a total of three times to try out three different approaches we are testing for response collection.</p>
+
+<p>The study involves no known risks. There are no known harms of discomforts associated with this study beyond those encountered in normal daily life. Participation in this study is voluntary. If you agree to participate via M-Turk you will have the option at the end of the study to be compensated at nominal rate of $1.50 for sixty minutes of participation. Your answers will remain confidential and you can refuse to answer any questions. However, even if you decide not to answer certain questions, please continue with the rest of the study. All collected data will be kept in an offline file in a password protected computer, and destroyed at the end of the project (or after a period of 3 years).</p>
+
+<p>Findings from this study will help us design programs that will achieve the best transcription programs. Your participation in this project will provide valuable data to help us design programs to achieve the best possible transcriptions.</p>
+
+<p>The University of California Irvine Institutional Review Board has approved this project (pending). If you have any questions about your rights as a participant, you may contact UCI&#39;s Office of Research Administration by phone, (949) 824-6662, by e-mail at <a href="mailto:IRB@rgs.uci.edu">IRB@rgs.uci.edu</a> or at 5171 California Avenue, Suite 150, Irvine, CA 92617. If you have any questions about this survey or about participating in the larger program, you may contact me. (telephone: 949-824-5582; email: <a href="mailto:colorcoglab@imbs.uci.edu">colorcoglab@imbs.uci.edu</a>.)</p>
+
+<p>Thank you for your time.</p>
+
+<p>Sincerely,</p>
+
+<p>Kimberly A. Jameson, Ph.D<br />
+Principal Investigator</p>
+
+<p><em>UCI IRB Registered: 10-21-2015 | APP # 9047 | HS# 2015-1976</em></p>
+</div>
+</section>
+<!-- close container section -->
+<style type="text/css">td {
+      font-size:1.0em;
+      padding:10px 50px 10px 0px;
+  }
+</style>
+<script type="text/javascript" language="JavaScript"><!--
+var assignment_id_field = document.getElementById('taskLink');
+var paramstr = window.location.search.substring(1);
+var parampairs = paramstr.split("&");
+var mturkworkerID = "";
+var task_language_id = '${task_language_id}';
+var task_type_id = '${task_type_id}';
+var task_img_id = '${task_img_id}';
+for (i in parampairs) {
+  var pair = parampairs[i].split("=");
+  if (pair[0] == "workerId")
+    mturkworkerID = pair[1];
+}
+if (mturkworkerID == "" ) {
+  assignment_id_field.innerHTML = '<tt>The link will appear here only if you accept this HIT.</tt>';
+} else {
+  assignment_id_field.innerHTML = '<a target="_blank" href="http://colcat.calit2.uci.edu:8003/tasks/disclaimer?mtwid=' + mturkworkerID + '&tlid=' + task_language_id + '&ttid=' + task_type_id + '&tiid=' + task_img_id + '"><h1><span style="color: rgb(255, 0, 0);"><span><b>CLICK HERE TO START THE TASK!</b></span></span></h1></a>';
+}
+
+// --></script>

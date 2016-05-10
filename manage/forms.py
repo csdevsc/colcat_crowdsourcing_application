@@ -12,9 +12,13 @@ class ImageForm(ModelForm):
     class Meta:
         model = Image_Data
         fields = ('language_name', 'task_type_name', 'image_filepath')
-    language_name = forms.ModelChoiceField(queryset=Language.objects.all().order_by('language_name'))
+    language_name = forms.ModelChoiceField(queryset=Language.objects.all().order_by('language_name'), to_field_name="language_name")
     task_type_name = forms.ModelChoiceField(queryset=Task_Type.objects.all().order_by('task_type_name'))
-    #image_filepath = forms.FileField(label='Select a file',)
+
+class DataModelForm(ModelForm):
+    class Meta:
+        model = Data_Model
+        fields = ('data_model',)
 
 class TaskTypeForm(ModelForm):
     class Meta:
@@ -26,7 +30,17 @@ class TaskTypeForm(ModelForm):
 class TaskForm(ModelForm):
     class Meta:
         model = Task
-        fields = ('language_name', 'task_type_name', 'image_filepath')
-    language_name = forms.ModelChoiceField(queryset=Language.objects.all().order_by('language_name'))
-    task_type_name = forms.ModelChoiceField(queryset=Task_Type.objects.all().order_by('task_type_name'))
-    image_filepath = forms.ModelChoiceField(queryset=Image_Data.objects.all().order_by('image_id'))
+        fields = ('language_id', 'task_type_id', 'image_id')
+    language_id = forms.ModelChoiceField(queryset=Language.objects.all().order_by('language_name'), to_field_name="language_id")
+    task_type_id = forms.ModelChoiceField(queryset=Task_Type.objects.all().order_by('task_type_name'))
+    image_id = forms.ModelChoiceField(queryset=Image_Data.objects.all().order_by('image_id'), to_field_name="image_id")
+
+class TaskTemplateForm(ModelForm):
+    class Meta:
+        model = Task_Template
+        fields = ('task_template_name', 'task_template_description', 'task_template_html')
+
+class BatchForm(forms.Form):
+    choices = forms.MultipleChoiceField(
+        widget  = forms.CheckboxSelectMultiple,
+    )

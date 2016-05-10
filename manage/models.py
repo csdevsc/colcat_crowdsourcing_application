@@ -21,7 +21,8 @@ class Image_Data(models.Model):
         db_table = 'tbl_image_data'
     def __unicode__(self):
         return str(self.image_filepath)
-    image_id = models.AutoField(primary_key=True, max_length=128)
+    #image_id = models.AutoField(primary_key=True, max_length=128)
+    image_id = models.CharField(max_length=128)
     language_name = models.CharField(max_length=128)
     task_type_name = models.CharField(max_length=128) # Foci, Naming, etc.
     image_filepath = models.FileField(upload_to=image_directory_path)
@@ -43,6 +44,8 @@ class Task_Template(models.Model):
         return self.task_template_name
     task_template_id = models.AutoField(primary_key=True, unique=True)
     task_template_name = models.CharField(max_length=128)
+    task_template_description = models.TextField()
+    task_template_html = models.TextField()     # HTML code to be used on Mechanical Turk
 
 class Data_Model(models.Model):
     class Meta:
@@ -59,7 +62,9 @@ class Task(models.Model):
         return self.task_name
     task_id = models.AutoField(primary_key=True, unique=True)
     task_name = models.CharField(max_length=128)
-    language_name = models.CharField(max_length=128)
-    task_type_name = models.CharField(max_length=128)
-    image_filepath = models.CharField(max_length=256)
+    language_id = models.CharField(max_length=128)
+    task_type_id = models.CharField(max_length=128)
+    image_id = models.CharField(max_length=128)
     task_url = models.CharField(max_length=256)
+    complete = models.BooleanField(default=False)
+    from_mturk = models.BooleanField(default=False)

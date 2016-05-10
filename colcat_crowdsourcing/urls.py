@@ -16,13 +16,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import RedirectView
-from homepage import views
+from home import views
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    #url(r'^$', views.login, name='login'),
-    url(r'^home/', views.home, name='home'),
+    url(r'^$', views.index, name='index'),
+    url(r'^demo/', views.demo, name='demo'),
+    url(r'^about/', views.about, name='about'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tasks/', include('tasks.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),

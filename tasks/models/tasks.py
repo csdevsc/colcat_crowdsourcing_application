@@ -18,6 +18,7 @@ class Task_Foci_001(Data_FullGrid):
     task_language_id = models.CharField(max_length=32)
     task_img_id = models.CharField(max_length=32)
     dt_completed = models.DateTimeField(auto_now=True)
+    task_id = models.CharField(max_length=128)
 
 class Task_Naming_001(Data_FullGrid_Confidence):
     class Meta:

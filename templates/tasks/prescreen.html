@@ -57,8 +57,10 @@ function getURLParameter(name) {
 
 function redirectPractice() {
   var mtwid = getURLParameter('mtwid');
+  var tlid = getURLParameter('tlid');
+  var ttid = getURLParameter('ttid');
   var tiid = getURLParameter('tiid');
-  window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/practice-foci?mtwid=" + mtwid + "&tiid=" + tiid);
+  window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/practice-foci?mtwid=" + mtwid + "&tlid=" + tlid + "&ttid=" + ttid + "&tiid=" + tiid);
 }
 </script>
 

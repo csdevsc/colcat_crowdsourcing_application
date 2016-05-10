@@ -23,8 +23,10 @@ function redirectPrescreen() {
   var agree4 = document.getElementById("disclaimer-agree-1").checked;
   if (agree1 && agree2 && agree3 && agree4) {
     var mtwid = getURLParameter('mtwid');
+    var tlid = getURLParameter('tlid');
+    var ttid = getURLParameter('ttid');
     var tiid = getURLParameter('tiid');
-    window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/prescreen?mtwid=" + mtwid + "&tiid=" + tiid);
+    window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/prescreen?mtwid=" + mtwid + "&tlid=" + tlid + "&ttid=" + ttid + "&tiid=" + tiid);
   } else {
     $('#alert-incorrect').show();
   }

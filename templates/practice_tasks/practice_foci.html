@@ -11,6 +11,8 @@ function getURLParameter(name) {
 
 function redirectTask() {
   var mtwid = getURLParameter('mtwid');
+  var tlid = getURLParameter('tlid');
+  var ttid = getURLParameter('ttid');
   var tiid = getURLParameter('tiid');
   window.location.replace("http://colcat.calit2.uci.edu:8003/tasks/foci/" + tiid + "?mtwid=" + mtwid);
 }

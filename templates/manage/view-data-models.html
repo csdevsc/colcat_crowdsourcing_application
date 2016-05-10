@@ -5,22 +5,22 @@
 
 {% block main %}
 <div class="col-md-6 col-offset-3">
-  <h3>Languages</h3>
-    {% if languages %}
+  <h3>Data Models</h3>
+    {% if models %}
       <table class="table table-striped table-bordered">
         <tr>
-          <th>language_id</th>
-          <th>language_name</th>
+          <th>data_model_id</th>
+          <th>data_model</th>
         </tr>
-        {% for language in languages %}
+        {% for model in models %}
         <tr>
-          <td>{{language.language_id}}</td>
-          <td>{{ language.language_name }}</td>
+          <td>{{model.data_model_id}}</td>
+          <td>{{model.data_model}}</td>
         </tr>
         {% endfor %}
       </table>
     {% else %}
-        <strong>There are no languages present.</strong>
+        <strong>There are no data models present.</strong>
     {% endif %}
 </div>
 {% endblock %}
