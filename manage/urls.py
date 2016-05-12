@@ -5,7 +5,8 @@ from django.conf.urls import patterns, url
 from manage import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.login, name='login'),
+    url(r'^main/$', views.main, name='main'),
     url(r'^new-language/$', views.new_language, name='new_language'),
     url(r'^view-languages/$', views.view_languages, name='view_languages'),
     url(r'^new-image/$', views.new_image, name='new_image'),

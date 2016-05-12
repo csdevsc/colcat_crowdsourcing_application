@@ -1,0 +1,37 @@
+{% extends 'manage-base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block nav_home %}active{% endblock %}
+
+{% block main %}
+<div>
+    <h3>Languages</h3>
+    <ul>
+      <li><a href="/manage/view-languages">View Languages</a></li>
+      <li><a href="/manage/new-language">Add New Language</a></li>
+    </ul>
+
+    <h3>Image Data</h3>
+    <ul>
+      <li><a href="/manage/view-images">View Images</a></li>
+      <li><a href="/manage/new-image">Add New Image</a></li>
+    </ul>
+
+    <h3>Tasks</h3>
+    <ul>
+      <li><a href="/manage/view-tasks">View Tasks</a></li>
+      <li><a href="/manage/new-task">Add New Task</a></li>
+      <li><a href="/manage/view-task-types">View Task Types</a></li>
+      <li><a href="/manage/new-task-type">Add New Task Type</a></li>
+      <li><a href="/manage/view-task-templates">View Task Templates</a></li>
+      <li><a href="/manage/new-task-template">Add New Task Template</a></li>
+      <li><a href="/manage/view-data-models">View Data Models</a></li>
+      <li><a href="/manage/new-data-model">Add New Data Model</a></li>
+    </ul>
+
+    <h3>Responses</h3>
+    <ul>
+      <li><a href="/manage/download-responses">Download Task Responses</a></li>
+    </ul>
+</div>
+{% endblock %}

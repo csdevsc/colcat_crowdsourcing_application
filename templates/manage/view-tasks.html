@@ -23,29 +23,29 @@
           Task Image ID
         </th>
         <th>
-          Add to batch
-        </th>
-        <th>
           Transcription complete?
         </th>
         <th>
           From Mechanical Turk?
         </th>
+        <th>
+          Add to batch
+        </th>
       </tr>
       {% for task in tasks %}
         <tr>
           <td>{{ task.task_id }}</td>
-          <td>{{ task.task_language_id }}</td>
+          <td>{{ task.language_id }}</td>
           <td>{{ task.task_type_id }}</td>
-          <td>{{ task.task_image_id }}</td>
-          <td>
-            <input type="checkbox" value="{{ task.task_id }}" name="task_choices">
-          </td>
+          <td>{{ task.image_id }}</td>
           <td>
             <input type="checkbox" value="{{ task.task_id }}" name="tasks_complete" {% if task.complete %}checked{% endif %}>
           </td>
           <td>
             <input type="checkbox" {% if task.from_mturk %}checked{% endif %}>
+          </td>
+          <td>
+            <input type="checkbox" value="{{ task.task_id }}" name="task_choices">
           </td>
         </tr>
       {% endfor %}

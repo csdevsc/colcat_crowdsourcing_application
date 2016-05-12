@@ -1,1 +1,35 @@
-<h1 class="text-danger">There was an error.</h1>
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="text-center">Oops:
+          <small>Page not found - <b>404 error</b></small>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <p>The page you are looking for might have been removed, had its name changed, or is unavailable. Please try the following:</p>
+
+            <ul class="list-group">
+              <li class="list-group-item">Make sure that the Web site address displayed in the address bar of your browser is spelled and formatted correctly.</li>
+              <li class="list-group-item">If you reached this page by clicking a link,
+                <a href="mailto:colcat@calit2.uci.edu"><b>contact us</b></a> to alert us that the link is incorrectly formatted.</li>
+                <li class="list-group-item">Go back to the <a href="/"><b>home</b> page</a>.</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+
+      </div>
+    </div>
+</div>
+{% endblock %}

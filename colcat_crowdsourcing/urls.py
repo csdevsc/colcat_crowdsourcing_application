@@ -19,13 +19,21 @@ from django.views.generic import RedirectView
 from home import views
 from django.conf.urls.static import static
 from django.conf import settings
+from registration.backends.simple.views import RegistrationView
+
+# Redirects the user to the index page, if successful at logging
+class RegistrationView(RegistrationView):
+    def get_success_url(self,request, user):
+        return '/home/'
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^demo/', views.demo, name='demo'),
     url(r'^about/', views.about, name='about'),
+    url(r'^home/', views.home, name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tasks/', include('tasks.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^accounts/register/$', RegistrationView.as_view(), name='registration_register'),
     url(r'^manage/', include ('manage.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

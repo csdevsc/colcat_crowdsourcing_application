@@ -2,11 +2,6 @@ from django import forms
 from django.forms import ModelForm
 from tasks.models import Task_Foci_001
 
-
-class DocumentForm(forms.Form):
-    docfile = forms.FileField(label='Select a file',)
-
-
 class Form_Task_Foci_001_00(ModelForm):
     class Meta:
         model =  Task_Foci_001

@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.conf import settings
 
 from manage.forms import *
 from manage.models import *
@@ -13,8 +14,16 @@ import csv
 from django.http import HttpResponse
 
 # Views
-def index(request):
-    return render(request, 'manage/index.html', {})
+def login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        if (username == settings.MANAGE_USERNAME and password == settings.MANAGE_PASS):
+            return redirect('manage.views.main')
+    return render(request, 'manage/login.html', {})
+
+def main(request):
+    return render(request, 'manage/main.html', {})
 
 # LANGUAGES
 def new_language(request):
@@ -39,6 +48,8 @@ def new_image(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
+            print request.FILES['image_filepath'].name
+            print request.FILES['image_filepath']
             image_name = os.path.splitext(request.FILES['image_filepath'].name)[0]
             newimg = Image_Data(image_filepath = request.FILES['image_filepath'], image_id = image_name, language_name = request.POST.get('language_name'), task_type_name = request.POST.get('task_type_name'))
             newimg.save()

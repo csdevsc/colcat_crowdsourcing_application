@@ -13,6 +13,7 @@ class Language(models.Model):
     language_name = models.CharField(max_length=128)
 
 def image_directory_path(instance, filename):
+    print os.path.join('data', instance.language_name.lower(), instance.task_type_name.lower(), filename)
     return os.path.join('data', instance.language_name.lower(), instance.task_type_name.lower(), filename)
 
 class Image_Data(models.Model):
