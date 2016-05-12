@@ -1,0 +1,30 @@
+{% extends 'manage-base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block nav_home %}active{% endblock %}
+
+{% block main %}
+<div class="col-md-6 col-offset-3">
+  <h3>Task Templates</h3>
+    {% if templates %}
+      <table class="table table-striped">
+        <tr>
+          <th>template_id</th>
+          <th>template_name</th>
+          <th>template_description</th>
+          <th>template_html</th>
+        </tr>
+        {% for template in templates %}
+        <tr>
+          <td>{{template.task_template_id}}</td>
+          <td>{{template.task_template_name}}</td>
+          <td>{{template.task_template_description}}</td>
+          <td>{{template.task_template_html}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+        <strong>There are currently no task templates.</strong>
+    {% endif %}
+</div>
+{% endblock %}
