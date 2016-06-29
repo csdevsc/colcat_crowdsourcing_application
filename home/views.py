@@ -21,7 +21,7 @@ def home(request):
     user_id = get_random_string(length=10)
     if request.method == "POST":
         user_id = request.POST.get('user_id_input')
-    task_list = Task.objects.filter(from_mturk=False)
+    task_list = Task.objects.filter(from_mturk=False).filter(complete=False)
     user_task_list = []
     for task in task_list:
         try:

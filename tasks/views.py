@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response
 from formtools.wizard.views import SessionWizardView
-from tasks.models import Task_Foci_001
+from tasks.models import Task_Foci_001, Task_Naming_001
 from django.utils.crypto import get_random_string
 from tasks.imports import *
 from manage.models import Task, Language
@@ -16,12 +16,15 @@ def get_task(request, language_id, task_type_id, img_id):
     x = request.GET.get('mtwid')
     random.seed(x)
     task_name = language_id + '_' + task_type_id + '_' + img_id
-    print(task_name)
+    print("TASK NAME: " + task_name)
     # CHECK THAT TASK EXISTS
     if Task.objects.filter(task_name=task_name):
         try:
             inst_dict = {'language_id': language_id, 'task_type_id': task_type_id, 'img_id': img_id}
-            return Foci_001_Wizard.as_view(sorted(Form_Task_Foci_001, key=lambda r:random.random()), instance_dict=inst_dict)(request)
+            if (task_type_id == '1'):
+                return Foci_001_Wizard.as_view(sorted(Form_Task_Foci_001, key=lambda r:random.random()), instance_dict=inst_dict)(request)
+            elif (task_type_id == '2'):
+                return Naming_001_Wizard.as_view(sorted(Form_Task_Naming_001, key=lambda r:random.random()), instance_dict=inst_dict)(request)
         except:
             return render(request, 'error.html', {})
     else:
@@ -44,6 +47,33 @@ class Foci_001_Wizard(SessionWizardView):
     def done(self, form_list, **kwargs):
         key = generate_key()
         instance = Task_Foci_001()
+        setattr(instance, 'task_response_key', key)
+        setattr(instance, 'worker_id', self.w_id)
+        setattr(instance, 'task_img_id', self.img_id)
+        setattr(instance, 'task_language_id', self.language_id)
+        for form in form_list:
+            for field, value in form.cleaned_data.iteritems():
+                setattr(instance, field, value)
+        instance.save()
+        # save with key
+        return render_to_response('tasks/completion.html', {'key': key})
+
+class Naming_001_Wizard(SessionWizardView):
+    template_name = 'tasks/naming-001.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.w_id = request.GET.get('mtwid')
+        #url(r'^(?P<language_id>\d+)/(?P<task_type_id>\d+)/(?P<img_id>\d+)$', views.get_task),
+        self.language_id = self.instance_dict.get('language_id')
+        self.language_name = Language.objects.get(language_id=self.language_id).language_name
+        self.task_type_id = self.instance_dict.get('task_type_id')
+        self.img_id = self.instance_dict.get('img_id')
+        self.img_url = 'http://colcat.calit2.uci.edu:8003/uploads/data/' + self.language_name + '/' + self.task_type_id + '/' + self.img_id + '.png'
+        return super(Naming_001_Wizard, self).dispatch(request, *args, **kwargs)
+
+    def done(self, form_list, **kwargs):
+        key = generate_key()
+        instance = Task_Naming_001()
         setattr(instance, 'task_response_key', key)
         setattr(instance, 'worker_id', self.w_id)
         setattr(instance, 'task_img_id', self.img_id)

@@ -13,8 +13,8 @@ class Language(models.Model):
     language_name = models.CharField(max_length=128)
 
 def image_directory_path(instance, filename):
-    print os.path.join('data', instance.language_name.lower(), instance.task_type_name.lower(), filename)
-    return os.path.join('data', instance.language_name.lower(), instance.task_type_name.lower(), filename)
+    print os.path.join('data', instance.language_name.lower(), instance.task_type_id.lower(), filename)
+    return os.path.join('data', instance.language_name.lower(), instance.task_type_id.lower(), filename)
 
 class Image_Data(models.Model):
     """List of all images used in crowdsourcing tasks"""
@@ -25,7 +25,7 @@ class Image_Data(models.Model):
     #image_id = models.AutoField(primary_key=True, max_length=128)
     image_id = models.CharField(max_length=128)
     language_name = models.CharField(max_length=128)
-    task_type_name = models.CharField(max_length=128) # Foci, Naming, etc.
+    task_type_id = models.CharField(max_length=128)
     image_filepath = models.FileField(upload_to=image_directory_path)
 
 class Task_Type(models.Model):

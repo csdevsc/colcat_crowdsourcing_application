@@ -6,27 +6,13 @@
 {% block main %}
 <div class="col-md-6 col-offset-3">
   <h1>Responses</h1>
-    {% if responses %}
-        <strong>Responses</strong>
+    {% if response_lists %}
         <br>
-        <a href="/uploads/responses/output.csv">Download all responses</a>
-        <br>
-        <table class="table table-striped">
-          <tr>
-            <th>
-              task_response_id
-            </th>
-            <th>
-              worker_id
-            </th>
-          </tr>
-          {% for response in responses %}
+        <table class="table">
+          {% for r in response_lists %}
           <tr>
             <td>
-              {{response.task_response_id}}
-            </td>
-            <td>
-              {{response.worker_id}}
+              <a href="/uploads/responses/{{r}}.csv">Download <strong>{{r}}</strong> responses</a>
             </td>
           </tr>
           {% endfor %}

@@ -11,7 +11,7 @@ from tasks.models import *
 
 import os
 import csv
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 
 # Views
 def login(request):
@@ -23,7 +23,14 @@ def login(request):
     return render(request, 'manage/login.html', {})
 
 def main(request):
-    return render(request, 'manage/main.html', {})
+    # Make sure no direct access to main page
+    try:
+        referer = request.META['HTTP_REFERER']
+    except:
+        return redirect('manage.views.login')
+    if referer.startswith('http://colcat.calit2.uci.edu:8003'):
+        return render(request, 'manage/main.html', {})
+    return redirect('manage.views.login')
 
 # LANGUAGES
 def new_language(request):
@@ -51,7 +58,7 @@ def new_image(request):
             print request.FILES['image_filepath'].name
             print request.FILES['image_filepath']
             image_name = os.path.splitext(request.FILES['image_filepath'].name)[0]
-            newimg = Image_Data(image_filepath = request.FILES['image_filepath'], image_id = image_name, language_name = request.POST.get('language_name'), task_type_name = request.POST.get('task_type_name'))
+            newimg = Image_Data(image_filepath = request.FILES['image_filepath'], image_id = image_name, language_name = request.POST.get('language_name'), task_type_id = request.POST.get('task_type_id'))
             newimg.save()
             # Redirect to the document list after POST
             return HttpResponseRedirect(reverse('manage.views.view_images'))
@@ -163,15 +170,28 @@ def view_task_templates(request):
 
 # RESPONSES
 def download_responses(request):
-    response_list = Task_Foci_001.objects.all()
-    context_dict = {'responses': response_list}
-    dump(response_list, 'uploads/responses/output.csv')
+    response_lists = []
+    # Add objects for each response type
+    try:
+        response_list_foci_001 = Task_Foci_001.objects.all()
+        response_lists.append(response_list_foci_001)
+    except:
+        pass
+    try:
+        response_list_naming_001 = Task_Naming_001.objects.all()
+        response_lists.append(response_list_naming_001)
+    except:
+        pass
+
+    context_dict = {'response_lists': [r.model.__name__ for r in response_lists]}
+    for rlist in response_lists:
+        write_responses_to_csv(rlist, 'uploads/responses/'+rlist.model.__name__+'.csv')
     return render(request, 'manage/download-responses.html', context_dict)
 
 import csv
 from django.db.models.loading import get_model
 
-def dump(qs, outfile_path):
+def write_responses_to_csv(qs, outfile_path):
     model = qs.model
     writer = csv.writer(open(outfile_path, 'w'))
 
